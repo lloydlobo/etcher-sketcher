@@ -1,2 +1,2 @@
-export * from "./sleep";
-export * from "./random-index-for-array";
+export * from './sleep';
+export * from './random-index-for-array';

@@ -1,130 +1,130 @@
 #app {
-  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  /* color: #2c3e50; */
-  margin-top: 60px;
+    /* font-family: Avenir, Helvetica, Arial, sans-serif; */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    /* color: #2c3e50; */
+    margin-top: 60px;
 }
 
 :root {
-  /* gap to add in flex buttons with javascript on click */
-  --gap-btn: 0rem;
+    /* gap to add in flex buttons with javascript on click */
+    --gap-btn: 0rem;
 
-  /* opacity to fade in/out elements on reset */
-  --fade: 1;
+    /* opacity to fade in/out elements on reset */
+    --fade: 1;
 
-  /* constants */
+    /* constants */
 
-  /* type-ratios */
-  --type-ratio-minor-second: 1.067;
-  --type-ratio-major-second: 1.125;
-  --type-ratio-minor-third: 1.2;
-  --type-ratio-major-third: 1.25;
-  --type-ratio-perfect-fourth: 1.333;
-  --type-ratio-augmented-fourth: 1.414;
-  --type-ratio-perfect-fifth: 1.5;
-  --type-ratio-golden-ratio: 1.6180339887;
+    /* type-ratios */
+    --type-ratio-minor-second: 1.067;
+    --type-ratio-major-second: 1.125;
+    --type-ratio-minor-third: 1.2;
+    --type-ratio-major-third: 1.25;
+    --type-ratio-perfect-fourth: 1.333;
+    --type-ratio-augmented-fourth: 1.414;
+    --type-ratio-perfect-fifth: 1.5;
+    --type-ratio-golden-ratio: 1.6180339887;
 
-  --type-ratio-current: [-type-ratio-minor-second, -type-ratio-major-second,
-    -type-ratio-minor-third, -type-ratio-major-third, -type-ratio-perfect-fourth,
-    -type-ratio-augmented-fourth, -type-ratio-perfect-fifth,
-    -type-ratio-golden-ratio];
-  --type-scale-index: [0, 1, 2, 3, 4, 5, 6, 7];
-  --type-scale-ratio: [1, 1.067, 1.125, 1.2, 1.25, 1.333, 1.414, 1.5,
-    1.6180339887];
+    --type-ratio-current: [-type-ratio-minor-second, -type-ratio-major-second,
+        -type-ratio-minor-third, -type-ratio-major-third,
+        -type-ratio-perfect-fourth, -type-ratio-augmented-fourth,
+        -type-ratio-perfect-fifth, -type-ratio-golden-ratio];
+    --type-scale-index: [0, 1, 2, 3, 4, 5, 6, 7];
+    --type-scale-ratio: [1, 1.067, 1.125, 1.2, 1.25, 1.333, 1.414, 1.5,
+        1.6180339887];
 
-  --size-1: --type-ratio-minor-second;
-  --size-2: --type-ratio-major-second;
-  --size-3: --type-ratio-minor-third;
-  --size-4: --type-ratio-major-third;
-  --size-5: --type-ratio-perfect-fourth;
-  --size-6: --type-ratio-augmented-fourth;
-  --size-7: --type-ratio-perfect-fifth;
-  --size-8: --type-ratio-golden-ratio;
+    --size-1: --type-ratio-minor-second;
+    --size-2: --type-ratio-major-second;
+    --size-3: --type-ratio-minor-third;
+    --size-4: --type-ratio-major-third;
+    --size-5: --type-ratio-perfect-fourth;
+    --size-6: --type-ratio-augmented-fourth;
+    --size-7: --type-ratio-perfect-fifth;
+    --size-8: --type-ratio-golden-ratio;
 
-  --size-current: [-size-1, -size-2, -size-3, -size-4, -size-5, -size-6, -size-7,
-    -size-8];
-  --size-scale-index: [0, 1, 2, 3, 4, 5, 6, 7];
+    --size-current: [-size-1, -size-2, -size-3, -size-4, -size-5, -size-6,
+        -size-7, -size-8];
+    --size-scale-index: [0, 1, 2, 3, 4, 5, 6, 7];
 
-  /* type-ratio-font calculation */
+    /* type-ratio-font calculation */
 
-  /* font size */
+    /* font size */
 
-  --font-size-100: 0.25rem;
-  --font-size-200: 0.5rem;
-  --font-size-300: 0.75rem;
-  --font-size-400: 1rem;
-  --font-size-500: 1.25rem;
-  --font-size-600: 1.5rem;
-  --font-size-700: 1.75rem;
-  --font-size-800: 2rem;
-  --font-size-900: 2.25rem;
+    --font-size-100: 0.25rem;
+    --font-size-200: 0.5rem;
+    --font-size-300: 0.75rem;
+    --font-size-400: 1rem;
+    --font-size-500: 1.25rem;
+    --font-size-600: 1.5rem;
+    --font-size-700: 1.75rem;
+    --font-size-800: 2rem;
+    --font-size-900: 2.25rem;
 
-  /* color pallette by https://github.com/YV31/gruvbox-css/blob/master/src/gruvbox-dark.css */
-  --bg_h: #1d2021;
-  --bg: #282828;
-  --bg_s: #32302f;
-  --bg1: #3c3836;
-  --bg2: #504945;
-  --bg3: #665c54;
-  --bg4: #7c6f64;
+    /* color pallette by https://github.com/YV31/gruvbox-css/blob/master/src/gruvbox-dark.css */
+    --bg_h: #1d2021;
+    --bg: #282828;
+    --bg_s: #32302f;
+    --bg1: #3c3836;
+    --bg2: #504945;
+    --bg3: #665c54;
+    --bg4: #7c6f64;
 
-  --fg: #fbf1c7;
-  --fg1: #ebdbb2;
-  --fg2: #d5c4a1;
-  --fg3: #bdae93;
-  --fg4: #a89984;
+    --fg: #fbf1c7;
+    --fg1: #ebdbb2;
+    --fg2: #d5c4a1;
+    --fg3: #bdae93;
+    --fg4: #a89984;
 
-  --red: #fb4934;
-  --green: #b8bb26;
-  --yellow: #fabd2f;
-  --blue: #83a598;
-  --purple: #d3869b;
-  --aqua: #8ec07c;
-  --gray: #928374;
-  --orange: #fe8019;
+    --red: #fb4934;
+    --green: #b8bb26;
+    --yellow: #fabd2f;
+    --blue: #83a598;
+    --purple: #d3869b;
+    --aqua: #8ec07c;
+    --gray: #928374;
+    --orange: #fe8019;
 
-  --red-dim: #cc2412;
-  --green-dim: #98971a;
-  --yellow-dim: #d79921;
-  --blue-dim: #458588;
-  --purple-dim: #b16286;
-  --aqua-dim: #689d6a;
-  --gray-dim: #a89984;
-  --orange-dim: #d65d0e;
+    --red-dim: #cc2412;
+    --green-dim: #98971a;
+    --yellow-dim: #d79921;
+    --blue-dim: #458588;
+    --purple-dim: #b16286;
+    --aqua-dim: #689d6a;
+    --gray-dim: #a89984;
+    --orange-dim: #d65d0e;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  width: min(100% - 2rem, 75.614vw);
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 0;
+    width: min(100% - 2rem, 75.614vw);
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 0;
 
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
-  line-height: 1.5;
-  font-size: clamp(1.25rem, 2vw, 2.5rem);
-  font-family: "Courier New", Courier, monospace;
+    line-height: 1.5;
+    font-size: clamp(1.25rem, 2vw, 2.5rem);
+    font-family: 'Courier New', Courier, monospace;
 
-  color: var(--fg);
-  background-color: var(--bg_h);
+    color: var(--fg);
+    background-color: var(--bg_h);
 
-  overflow-x: hidden;
+    overflow-x: hidden;
 
-  display: grid;
-  grid-template-areas:
-    "header"
-    "main"
-    "footer";
+    display: grid;
+    grid-template-areas:
+        'header'
+        'main'
+        'footer';
 }
 
 p,
@@ -133,79 +133,79 @@ h1,
 h2,
 h3,
 h4 {
-  overflow-wrap: break-word;
-  hyphens: auto;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 a {
-  text-decoration: none;
-  color: var(--green-dim);
-  transform: none;
-  transition: all 0.25s ease-out;
-  /* position: relative; */
+    text-decoration: none;
+    color: var(--green-dim);
+    transform: none;
+    transition: all 0.25s ease-out;
+    /* position: relative; */
 
-  /* padding: 2em 3em; */
+    /* padding: 2em 3em; */
 }
 
 a:hover {
-  color: var(--green);
-  transition: all 0.25s ease-in;
-  text-decoration: dashed underline;
-  /* position: relative; */
-  /* padding-block-start: calc(2em - 2px); */
+    color: var(--green);
+    transition: all 0.25s ease-in;
+    text-decoration: dashed underline;
+    /* position: relative; */
+    /* padding-block-start: calc(2em - 2px); */
 }
 
 h1 {
-  font-size: clamp(1.25rem, 2vw, 3.5rem);
-  font-weight: 700;
-  margin-top: 0;
-  padding: 0;
-  text-transform: lowercase;
-  letter-spacing: 0.5rem;
+    font-size: clamp(1.25rem, 2vw, 3.5rem);
+    font-weight: 700;
+    margin-top: 0;
+    padding: 0;
+    text-transform: lowercase;
+    letter-spacing: 0.5rem;
 
-  opacity: var(--fade-in);
-  /* text-decoration: dashed underline; */
+    opacity: var(--fade-in);
+    /* text-decoration: dashed underline; */
 }
 
 /* region:      --- features add-on */
 
 .inspire {
-  font-size: var(--font-size-300);
-  /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
-  text-transform: lowercase;
-  letter-spacing: 0.4rem;
-  font-weight: 400;
-  color: var(--fg4);
+    font-size: var(--font-size-300);
+    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+    text-transform: lowercase;
+    letter-spacing: 0.4rem;
+    font-weight: 400;
+    color: var(--fg4);
 
-  text-shadow: rgb(29, 32, 33);
+    text-shadow: rgb(29, 32, 33);
 
-  background-color: var(--fg4);
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: rgba(29, 32, 33, 0.5) 3px 5px 1px;
+    background-color: var(--fg4);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(29, 32, 33, 0.5) 3px 5px 1px;
 
-  text-shadow: -1px -1px rgba(0, 0, 0, 0.5), 1px 1px rgba(255, 255, 255, 0.5);
-  color: rgba(0, 0, 0, 0.5);
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.5), 1px 1px rgba(255, 255, 255, 0.5);
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .engrave-text {
-  background-color: var(--bg4);
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: rgba(245, 245, 245, 0.5) 3px 5px 1px;
+    background-color: var(--bg4);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(245, 245, 245, 0.5) 3px 5px 1px;
 } /* credits: https://codepen.io/daryl/pen/XWXpyz */
 
 /* endregion:   --- features add-on */
 
 /* region:      --- footer --- */
 footer {
-  font-size: var(--font-size-300);
-  text-transform: lowercase;
-  letter-spacing: calc(var(--font-size-100) / var(--type-ratio-golden-ratio));
+    font-size: var(--font-size-300);
+    text-transform: lowercase;
+    letter-spacing: calc(var(--font-size-100) / var(--type-ratio-golden-ratio));
 }
 
 /* endregion:   --- footer --- */
@@ -213,116 +213,116 @@ footer {
 /* region:      --- animation --- */
 
 button {
-  position: relative;
-  border: none;
-  /* font-size: 18px; */
-  transition: color 0.5s, transform 0.2s, background-color 0.2s;
-  /* outline: none; */
-  border-radius: 3px;
-  margin: 0 10px;
-  /* padding: 23px 33px; */
-  padding-block: var(--font-size-400);
-  padding-inline: var(--font-size-700);
-  border: 3px solid transparent;
-  cursor: pointer;
-  background-color: var(--bg1);
-  letter-spacing: var(--font-size-100);
+    position: relative;
+    border: none;
+    /* font-size: 18px; */
+    transition: color 0.5s, transform 0.2s, background-color 0.2s;
+    /* outline: none; */
+    border-radius: 3px;
+    margin: 0 10px;
+    /* padding: 23px 33px; */
+    padding-block: var(--font-size-400);
+    padding-inline: var(--font-size-700);
+    border: 3px solid transparent;
+    cursor: pointer;
+    background-color: var(--bg1);
+    letter-spacing: var(--font-size-100);
 }
 
 button:active {
-  transform: translateY(3px);
+    transform: translateY(3px);
 }
 
 button::after,
 button::before {
-  border-radius: 3px;
+    border-radius: 3px;
 }
 
 .shrink-border {
-  /* background-color: transparent; */
-  color: var(--bg_h);
+    /* background-color: transparent; */
+    color: var(--bg_h);
 }
 .shrink-border:hover {
-  background-color: transparent;
-  box-shadow: none;
-  color: var(--fg2);
+    background-color: transparent;
+    box-shadow: none;
+    color: var(--fg2);
 }
 .shrink-border::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 3px solid var(--bg_h);
-  transition: opacity 0.3s, border 0.3s;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--bg_h);
+    transition: opacity 0.3s, border 0.3s;
 }
 .shrink-border:hover::before {
-  opacity: 0;
+    opacity: 0;
 }
 .shrink-border::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
-  border: 3px solid var(--fg3);
-  opacity: 0;
-  z-index: -1;
-  transform: scaleX(1.1) scaleY(1.3);
-  transition: transform 0.3s, opacity 0.3s;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: 3px solid var(--fg3);
+    opacity: 0;
+    z-index: -1;
+    transform: scaleX(1.1) scaleY(1.3);
+    transition: transform 0.3s, opacity 0.3s;
 }
 
 .shrink-border:hover::after {
-  opacity: 1;
-  transform: scaleX(1) scaleY(1);
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
 }
 .material-bubble {
-  /* background-color: transparent; */
-  color: var(--fg);
-  border: none;
-  overflow: hidden;
-  box-shadow: none;
+    /* background-color: transparent; */
+    color: var(--fg);
+    border: none;
+    overflow: hidden;
+    box-shadow: none;
 }
 .material-bubble:hover {
-  color: var(--bg_h);
+    color: var(--bg_h);
 }
 .material-bubble::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 3px solid var(--bg_h);
-  transition: opacity 0.3s, border 0.3s;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--bg_h);
+    transition: opacity 0.3s, border 0.3s;
 }
 
 .material-bubble:hover::before {
-  opacity: 0;
+    opacity: 0;
 }
 .material-bubble:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 200px;
-  /* background-color: lighten(var(--blue-dim), 10%); */
-  /* background-color: var(--bg4); */
-  background-color: var(--fg2);
-  border-color: transparent;
-  border-radius: 50%;
-  transform: translate(-10px, -70px) scale(0.1);
-  opacity: 0;
-  z-index: -1;
-  transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    /* background-color: lighten(var(--blue-dim), 10%); */
+    /* background-color: var(--bg4); */
+    background-color: var(--fg2);
+    border-color: transparent;
+    border-radius: 50%;
+    transform: translate(-10px, -70px) scale(0.1);
+    opacity: 0;
+    z-index: -1;
+    transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
 }
 
 .material-bubble:hover::after {
-  opacity: 1;
-  transform-origin: 100px 100px;
-  transform: scale(1) translate(-10px, -70px);
+    opacity: 1;
+    transform-origin: 100px 100px;
+    transform: scale(1) translate(-10px, -70px);
 }

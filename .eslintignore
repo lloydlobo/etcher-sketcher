@@ -1,0 +1,5 @@
+# **/*.ts
+**/*.config.ts
+**/*.test.ts
+**/*.spec.ts
+# service-worker.js

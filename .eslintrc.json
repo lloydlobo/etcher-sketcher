@@ -1,0 +1,33 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": ["airbnb-base", "prettier"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": ["@typescript-eslint", "prettier"],
+    "rules": {
+        "prettier/prettier": "off",
+        "import/extensions": "off",
+        "import/prefer-default-export": "off",
+        "import/no-unresolved": "off",
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": ["**/*.test.ts", "**/*.test.tsx"]
+            }
+        ]
+    },
+    "overrides": [
+        {
+            "files": ["dist/*.js", "src/**/*.test.ts", "vite.config.ts"],
+            "rules": {
+                // "@typescript-eslint/no-unused-vars": "warn",
+            }
+        }
+    ]
+}
