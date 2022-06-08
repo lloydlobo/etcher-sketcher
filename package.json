@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "coverage": "vitest run --coverage",
-    "test": "vitest",
+    "test": "vitest --dom",
     "testui": "vitest --ui",
     "dev": "vite",
     "build": "tsc && vite build",
@@ -13,6 +13,7 @@
   "devDependencies": {
     "@vitejs/plugin-legacy": "^1.8.2",
     "@vitest/ui": "^0.14.1",
+    "happy-dom": "^5.0.0",
     "jsdoc": "^3.6.10",
     "typescript": "^4.5.4",
     "vite": "^2.9.9",
