@@ -1,21 +1,66 @@
 export const extractOneTypeOfQuotes = async (
-  data: any,
+  dataToStrings: any,
   categoryQuote: string
-) => {
+): Promise<any> => {
+  const category = categoryQuote.toLowerCase();
   try {
-    const { zen_quotes, programming_quotes } = data;
+    const { zen_quotes, programming_quotes } = dataToStrings;
     const zen = await zen_quotes;
     const programming = await programming_quotes;
-    if ((categoryQuote = `zen`)) {
+    if (category === `zen`) {
       return zen;
-    } else if ((categoryQuote = `programming`)) {
+    } else if (category === `programming`) {
       return programming;
     } else {
       // return "no such category";
-      throw new Error("🚀 ~ file: main.ts ~ line 82 ~ extractOneTypeOfQuotes");
+      throw new Error("no such category");
     }
   } catch (error) {
-    console.error(error);
-    throw new Error("🚀 ~ file: main.ts ~ line 82 ~ extractOneTypeOfQuotes");
+    // console.error(error);
+    throw new Error("no such category");
   }
 };
+
+// region:      --- UNIT TEST SUITE ---
+
+const vitest = import.meta.vitest;
+if (vitest) {
+  describe("extractOneTypeOfQuotes", () => {
+    test("extractOneTypeOfQuotes([], `zen`) to be instance of a Promise<any>", () => {
+      expect(extractOneTypeOfQuotes([], `zen`)).toBeInstanceOf(Promise);
+    });
+
+    it('category is lowercase when categoryQuote is "Zen"', async () => {
+      const categoryQuote = "Zen";
+      const category = categoryQuote.toLowerCase();
+      expect(category).toBe(`zen`);
+    });
+
+    it('category is lowercase when categoryQuote is "Programming"', async () => {
+      const categoryQuote = "Programming";
+      const category = categoryQuote.toLowerCase();
+      expect(category).toBe(`programming`);
+    });
+
+    it('throws an error if the second argument is not "Zen" or "Programming"', async () => {
+      const categoryQuote = "NoSuchCategory";
+      await expect(extractOneTypeOfQuotes([], categoryQuote)).rejects.toThrow(
+        "no such category"
+      );
+    });
+
+    it("should return instance of array when initiated to a variable 'quotes' ", async () => {
+      const categoryQuote = "Zen";
+      const category = categoryQuote.toLowerCase();
+      const dataToStrings = {
+        zen_quotes: ["a", "b", "c"],
+        programming_quotes: ["d", "e", "f"],
+      };
+      const quotes = await extractOneTypeOfQuotes(dataToStrings, category);
+      expect(quotes).toBeInstanceOf(Array);
+      expect(quotes).toBeTruthy();
+    });
+  });
+}
+
+// endregion:   --- UNIT TEST SUITE ---

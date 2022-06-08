@@ -1,6 +1,6 @@
 // @vitest-environment happy-dom
 
-import { main } from "./main";
+// import { main } from "./main";
 import { Window } from "happy-dom";
 
 const window = new Window();
