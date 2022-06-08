@@ -14,6 +14,8 @@
   /* opacity to fade in/out elements on reset */
   --fade: 1;
 
+  /* constants */
+  --golden-ratio: 1.6180339887;
   /* font size */
 
   --font-size-100: 0.25rem;
@@ -157,6 +159,8 @@ h1 {
 /* region:      --- footer --- */
 footer {
   font-size: var(--font-size-300);
+  text-transform: lowercase;
+  letter-spacing: calc(var(--font-size-100) / var(--golden-ratio));
 }
 
 /* endregion:   --- footer --- */
@@ -166,13 +170,18 @@ footer {
 button {
   position: relative;
   border: none;
-  font-size: 18px;
+  /* font-size: 18px; */
   transition: color 0.5s, transform 0.2s, background-color 0.2s;
-  outline: none;
+  /* outline: none; */
   border-radius: 3px;
   margin: 0 10px;
-  padding: 23px 33px;
+  /* padding: 23px 33px; */
+  padding-block: var(--font-size-400);
+  padding-inline: var(--font-size-700);
   border: 3px solid transparent;
+  cursor: pointer;
+  background-color: var(--bg1);
+  letter-spacing: var(--font-size-100);
 }
 
 button:active {
@@ -185,8 +194,8 @@ button::before {
 }
 
 .shrink-border {
-  background-color: transparent;
-  color: darken(var(--aqua-dim), 10%);
+  /* background-color: transparent; */
+  color: var(--bg_h);
 }
 .shrink-border:hover {
   background-color: transparent;
@@ -200,7 +209,7 @@ button::before {
   left: 0;
   width: 100%;
   height: 100%;
-  border: 3px solid darken(var(--blue-dim), 10%);
+  border: 3px solid var(--bg_h);
   transition: opacity 0.3s, border 0.3s;
 }
 .shrink-border:hover::before {
@@ -226,14 +235,14 @@ button::before {
   transform: scaleX(1) scaleY(1);
 }
 .material-bubble {
-  background-color: transparent;
-  color: darken(var(--blue-dim), 10%);
+  /* background-color: transparent; */
+  color: var(--fg);
   border: none;
   overflow: hidden;
   box-shadow: none;
 }
 .material-bubble:hover {
-  color: var(--fg3);
+  color: var(--bg_h);
 }
 .material-bubble::before {
   content: "";
@@ -242,7 +251,7 @@ button::before {
   left: 0;
   width: 100%;
   height: 100%;
-  border: 3px solid darken(var(--blue-dim), 10%);
+  border: 3px solid var(--bg_h);
   transition: opacity 0.3s, border 0.3s;
 }
 
@@ -256,7 +265,9 @@ button::before {
   left: 0;
   width: 200px;
   height: 200px;
-  background-color: lighten(var(--blue-dim), 10%);
+  /* background-color: lighten(var(--blue-dim), 10%); */
+  /* background-color: var(--bg4); */
+  background-color: var(--fg2);
   border-color: transparent;
   border-radius: 50%;
   transform: translate(-10px, -70px) scale(0.1);
