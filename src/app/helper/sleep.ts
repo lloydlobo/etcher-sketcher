@@ -11,9 +11,9 @@ export async function sleep(ms = 1000) {
 }
 
 // in-source test suites with vitest
-// const vitest = import.meta.vitest;
-const { vitest } = import.meta;
-if (vitest) {
+
+// @vitest-environment happy-dom
+if (import.meta.vitest) {
     // const { describe, test, expect, it } = vitest;
     describe('sleep', () => {
         test('sleep(1000) should return a Promise', () => {

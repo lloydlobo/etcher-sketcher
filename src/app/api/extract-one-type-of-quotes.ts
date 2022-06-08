@@ -30,9 +30,8 @@ export const extractOneTypeOfQuotes = async (
 
 // region:      --- UNIT TEST SUITE ---
 
-// const vitest = import.meta.vitest;
-const { vitest } = import.meta;
-if (vitest) {
+// @vitest-environment happy-dom
+if (import.meta.vitest) {
     describe('extractOneTypeOfQuotes', () => {
         test('extractOneTypeOfQuotes([], `zen`) to be instance of a Promise<any>', () => {
             expect(extractOneTypeOfQuotes([], `zen`)).toBeInstanceOf(Promise);

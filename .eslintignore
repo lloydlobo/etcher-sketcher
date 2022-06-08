@@ -3,3 +3,4 @@
 **/*.test.ts
 **/*.spec.ts
 # service-worker.js
+dist/

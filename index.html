@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Etcher Sketcher</title>
+        <title>Etcher Sketcher</title>
 
-    <!-- region:      --- PWA --- -->
-    <link rel="manifest" href="/manifest.json" />
-    <!-- set meta theme-color for the address bar with a valid CSS color -->
-    <meta name="theme-color" content="#1b1d1e" />
-    <meta
-      name="description"
-      content="Etcher Sketcher is a tool to create and edit sketches in the Etcher desktop app."
-    />
-    <link rel="apple-touch-icon" href="icons/apple-icon-180.png" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <!-- endregion:   --- PWA --- -->
-  </head>
-  <body>
-    <main role="main" id="main">
-      <div id="app"></div>
-    </main>
-    <footer id="footer">
-      &copy <a href="https://github.com/lloydlobo">Lloyd Lobo</a>
-      <!-- | Project for <a href="https://theodinproject.com">The Odin Project</a> -->
-    </footer>
-    <script type="module" src="/src/main.ts"></script>
+        <!-- region:      --- PWA --- -->
+        <link rel="manifest" href="/manifest.json" />
+        <!-- set meta theme-color for the address bar with a valid CSS color -->
+        <meta name="theme-color" content="#1b1d1e" />
+        <meta
+            name="description"
+            content="Etcher Sketcher is a tool to create and edit sketches in the Etcher desktop app."
+        />
 
-    <script>
-      // PWA stuff with WorkBox
+        <link rel="apple-touch-icon" href="icons/apple-icon-180.png" />
 
-      if ("serviceWorker in navigator") {
-        // maybe the file path should be relative to the index.html file
-        navigator.serviceWorker.register("../service-worker.js");
-      }
-    </script>
-  </body>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        <!-- endregion:   --- PWA --- -->
+    </head>
+    <body>
+        <main role="main" id="main">
+            <div id="app"></div>
+        </main>
+        <footer id="footer">
+            &copy <a href="https://github.com/lloydlobo">Lloyd Lobo</a>
+            <!-- | Project for <a href="https://theodinproject.com">The Odin Project</a> -->
+        </footer>
+        <script type="module" src="/src/main.ts"></script>
+
+        <script>
+            // PWA stuff with WorkBox
+
+            if ('serviceWorker in navigator') {
+                // maybe the file path should be relative to the index.html file
+                navigator.serviceWorker.register('../service-worker.js');
+            }
+        </script>
+    </body>
 </html>

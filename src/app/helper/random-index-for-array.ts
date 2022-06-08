@@ -12,8 +12,9 @@ export const randomIndexForArray = async (array: string[]) => {
 // region:      --- test suite ---
 
 // in-source test suites with vitest
-// const vitest = import.meta.vitest;
-const { vitest } = import.meta;
+// eslint-disable-next-line prefer-destructuring
+const vitest = import.meta.vitest;
+// const { vitest } = import.meta;
 
 if (vitest) {
     describe('randomIndexForArray', () => {
