@@ -17,18 +17,6 @@ ${heading1}
 
 // endregion:   --- app ---
 
-// region:      --- main ---
-export function main() {
-    sleep(1000).then(() => {
-        // console.clear()
-        // console.log('Gloria In Excelsis Deo!')
-    });
-}
-
-main();
-
-// endregion:   --- main ---
-
 // region:      --- style ---
 
 export const styleAddClassBtn = ['shrink-border', 'material-bubble'];
@@ -49,4 +37,16 @@ function createButtonSketching() {
     app.appendChild(btn);
     return btn;
 }
-createButtonSketching();
+
+// region:      --- main ---
+export function main() {
+    sleep(1000).then(() => {
+        createButtonSketching();
+        // console.clear()
+        // console.log('Gloria In Excelsis Deo!')
+    });
+}
+
+main();
+
+// endregion:   --- main ---
