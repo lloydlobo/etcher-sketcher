@@ -60,9 +60,10 @@ btnGetInspired.addEventListener("click", async () => {
 async function getRandomQuote(category: string) {
   const data = await readJSON("src/assets/quotes.json");
   const dataToStrings = await extractStringFromArray(data);
-  const quotes: [] = await extractOneTypeOfQuotes(dataToStrings, category).then(
-    (zen) => zen
-  );
+  const quotes: string[] = await extractOneTypeOfQuotes(
+    dataToStrings,
+    category
+  ).then((zen) => zen);
   const randomIndex = await randomIndexForArray(quotes);
   const quote = quotes[randomIndex];
   console.log(quote);

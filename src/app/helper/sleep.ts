@@ -12,24 +12,22 @@ if (vitest) {
       expect(sleep(1000)).toBeInstanceOf(Promise);
     });
 
+    it("sleep resolves as undefined", async () => {
+      await expect(sleep()).resolves.toBeUndefined();
+    });
+
     it("sleep(1000) should resolve after 1 second", async () => {
       const start = Date.now();
       await sleep(1000);
       const end = Date.now();
       expect(end - start).toBeGreaterThanOrEqual(1000);
     });
+
+    it("sleep(0) should resolve after 0 second", async () => {
+      const start = Date.now();
+      await sleep(0);
+      const end = Date.now();
+      expect(end - start).toBeGreaterThanOrEqual(0);
+    });
   });
 }
-
-// if (import.meta.env.VITE_TEST) {
-//   it("sleep", async () => {
-//     await sleep(1000);
-//     expect(true).toBe(true);
-//   });
-
-//   it("sleep for 1000ms", async () => {
-//     const now = Date.now();
-//     await sleep(1000);
-//     expect(Date.now() - now).toBeGreaterThanOrEqual(1000);
-//   });
-// }
