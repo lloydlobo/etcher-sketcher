@@ -1,24 +1,19 @@
 // region:      --- imports ---
 import './style.css';
 
-import {
-    extractOneTypeOfQuotes,
-    extractStringFromArray,
-    randomIndexForArray,
-    readJSON,
-    sleep,
-} from './app';
+import { sleep } from './app';
+// import { createButtonInspired } from './createButtonInspired';
 
 // endregion:   --- imports ---
 
 // region:      --- app ---
 const app = document.querySelector<HTMLDivElement>('#app')!;
 const heading1 = `<h1 class="heading">etcher sketcher</h1>`;
-const htmlBtnGetInspired = `<button id="btnGetInspired">get inspired</button>`;
+// const htmlBtnGetInspired = `<button id="btnGetInspired">get inspired</button>`;
 app.innerHTML = `
 ${heading1}
-${htmlBtnGetInspired}
 `;
+// ${htmlBtnGetInspired}
 
 // endregion:   --- app ---
 
@@ -36,38 +31,22 @@ main();
 
 // region:      --- style ---
 
-const styleAddClassBtn = ['shrink-border', 'material-bubble'];
+export const styleAddClassBtn = ['shrink-border', 'material-bubble'];
 
 // endregion:   --- style ---
 
 // region:      --- buttons ---
+// const btnGetInspired = createButtonInspired();
 
-const btnGetInspired = document.getElementById(
-    'btnGetInspired',
-)! as HTMLButtonElement;
-btnGetInspired.classList.add(...styleAddClassBtn);
 // endregion:   --- buttons ---
-
 // region:      --- helper functions ---
-async function getRandomQuote(category: string) {
-    const data = await readJSON('src/assets/quotes.json');
-    const dataToStrings = await extractStringFromArray(data);
-    const quotes: string[] = await extractOneTypeOfQuotes(
-        dataToStrings,
-        category,
-    ).then((zen) => zen);
-    const randomIndex = await randomIndexForArray(quotes);
-    const quote = quotes[randomIndex];
-    // eslint-disable-next-line no-console
-    console.log(quote);
-    return quote;
-}
 // endregion:   --- helper functions ---
-
 // region:      --- events ---
-
-btnGetInspired.addEventListener('click', async () => {
-    await getRandomQuote('zen');
-});
-
-// endregion:   --- events ---
+function createButtonSketching() {
+    const btn = document.createElement('button') as HTMLButtonElement;
+    btn.innerHTML = 'start sketching';
+    btn.classList.add(...styleAddClassBtn);
+    app.appendChild(btn);
+    return btn;
+}
+createButtonSketching();

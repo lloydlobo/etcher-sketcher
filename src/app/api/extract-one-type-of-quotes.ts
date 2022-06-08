@@ -1,19 +1,15 @@
+/* cspell:disable-next-line */
+/* eslint-disable camelcase */
 /* eslint-disable no-undef */
-// cspell ignore 'extract-one-type-of-quotes'
 export const extractOneTypeOfQuotes = async (
     dataToStrings: any,
     categoryQuote: string,
 ): Promise<any> => {
     const category = categoryQuote.toLowerCase();
     try {
-        // cspell:disable
-        // eslint-disable-next-line camelcase
         const { zen_quotes, programming_quotes } = dataToStrings;
-        // eslint-disable-next-line camelcase
         const zen = await zen_quotes;
-        // eslint-disable-next-line camelcase
         const programming = await programming_quotes;
-        // cspell:enable
         if (category === `zen`) {
             return zen;
         }

@@ -5,7 +5,7 @@ export const readJSON = async (url: string) => {
         const data = await response.json();
         return data;
     } catch (error) {
-        throw new Error('Error: "readJSON", fetch failed');
+        throw new Error(`Error: "readJSON", fetch failed, ${error}`);
     }
 };
 
