@@ -58,8 +58,9 @@ async function getRandomQuote(category: string) {
     ).then((zen) => zen);
     const randomIndex = await randomIndexForArray(quotes);
     const quote = quotes[randomIndex];
+    // eslint-disable-next-line no-console
+    console.log(quote);
     return quote;
-    // console.log(quote)
 }
 // endregion:   --- helper functions ---
 
