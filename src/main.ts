@@ -1,7 +1,13 @@
 // region:      --- imports ---
 import "./style.css";
 
-import { sleep } from "./app";
+import {
+  extractOneTypeOfQuotes,
+  extractStringFromArray,
+  randomIndexForArray,
+  readJSON,
+  sleep,
+} from "./app";
 
 // endregion:   --- imports ---
 
@@ -33,17 +39,32 @@ main();
 const styleAddClassBtn = ["shrink-border", "material-bubble"];
 
 // endregion:   --- style ---
+
 // region:      --- buttons ---
 
 const btnGetInspired = document.getElementById(
   "btnGetInspired"
 )! as HTMLButtonElement;
-console.dir(btnGetInspired.classList);
 btnGetInspired.classList.add(...styleAddClassBtn);
 // endregion:   --- buttons ---
 
 // region:      --- events ---
-btnGetInspired.addEventListener("click", () => {
-  console.log("get inspired");
+
+btnGetInspired.addEventListener("click", async () => {
+  await getRandomQuote("zen");
 });
+
 // endregion:   --- events ---
+
+// region:      --- helper functions ---
+async function getRandomQuote(category: string) {
+  const data = await readJSON("src/assets/quotes.json");
+  const dataToStrings = await extractStringFromArray(data);
+  const quotes: [] = await extractOneTypeOfQuotes(dataToStrings, category).then(
+    (zen) => zen
+  );
+  const randomIndex = await randomIndexForArray(quotes);
+  const quote = quotes[randomIndex];
+  console.log(quote);
+}
+// endregion:   --- helper functions ---
