@@ -31,6 +31,30 @@ export const styleAddClassBtn = ['shrink-border', 'material-bubble'];
 
 // endregion:   --- style ---
 
+// region:      --- helper functions ---
+
+// helpers:     --- fade for loop
+async function fade(
+    element: HTMLElement,
+    speed = 0.1,
+    opacity = 0,
+    frames = 10,
+) {
+    // Arrow functions establish "this" based on the scope the Arrow function is defined within. from Arrow function e
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+
+    // Function declared in a loop contains unsafe references to variable(s) 'opacity', 'opacity'.eslintno-loop-func
+
+    for (let i = 0; i < frames; i += 1) {
+        // eslint-disable-next-line no-loop-func
+        sleep(i * 100).then(() => {
+            element.style.opacity = opacity.toString();
+            opacity += speed;
+        });
+    }
+}
+
+// endregion:   --- helper functions ---
 // region:      --- buttons ---
 // const btnGetInspired = createButtonInspired();
 
@@ -67,6 +91,10 @@ function generateGrid(size = 32 * 44, cssClass = 'grid-medium-default') {
     );
     containerGame.classList.add(cssClass);
 
+    // smooth animation that fades in as grid is
+    // generated with css on event btnStartSketch
+    fade(containerGame, 0.1, 0, 10);
+
     for (let i = 0; i < size; i += 1) {
         const div = document.createElement('div');
         containerGame.appendChild(div);
@@ -74,8 +102,6 @@ function generateGrid(size = 32 * 44, cssClass = 'grid-medium-default') {
 }
 console.dir(btnsSize, btnsMode);
 // endregion:   --- buttons ---
-// region:      --- helper functions ---
-// endregion:   --- helper functions ---
 // region:      --- events ---
 function createButtonSketching() {
     const btn = document.createElement('button') as HTMLButtonElement;
@@ -89,7 +115,7 @@ function createButtonSketching() {
 
 function startSketchGame() {
     generateGrid();
-    startSketching(`classic`);
+    // startSketching(`classic`);
 }
 // region:      --- main ---
 export function main() {
