@@ -9,6 +9,7 @@
 import './style.css';
 
 import { sleep } from './app';
+// import { runOnce } from 'vitest';
 // import { createButtonInspired } from './createButtonInspired';
 
 // endregion:   --- imports ---
@@ -81,16 +82,36 @@ function createButtonSketching() {
     btn.innerHTML = 'start sketching';
     btn.classList.add(...styleAddClassBtn);
     app.appendChild(btn);
+    // add an id to the btn
+    btn.id = 'btnStartSketching';
     return btn;
 }
 
+function startSketchGame() {
+    generateGrid();
+    startSketching(`classic`);
+}
 // region:      --- main ---
 export function main() {
-    sleep(1000).then(() => {
-        createButtonSketching();
-        // console.clear()
-        // console.log('Gloria In Excelsis Deo!')
+    createButtonSketching();
+    sleep(0).then(() => {
+        console.clear();
+        console.log('Gloria In Excelsis Deo!');
     });
+    const btnStartSketching = document.getElementById(
+        `btnStartSketching`,
+    ) as HTMLButtonElement;
+    btnStartSketching.addEventListener(
+        'click',
+        () => {
+            sleep(300).then(() => {
+                console.clear();
+                console.info(`btnStartSketching clicked`);
+                startSketchGame();
+            });
+        },
+        { once: true }, // https://www.educative.io/answers/how-to-ensure-an-event-listener-is-only-fired-once-in-javascript
+    );
 }
 
 main();
