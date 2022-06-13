@@ -4,7 +4,7 @@
 /* eslint-disable prefer-const */
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
-// cspell:ignore btns
+// cspell:ignore btns eslintno
 // region:      --- imports ---
 import './style.css';
 
@@ -40,11 +40,8 @@ async function fade(
     opacity = 0,
     frames = 10,
 ) {
-    // Arrow functions establish "this" based on the scope the Arrow function is defined within. from Arrow function e
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
-
+    // Arrow functions establish "this" based on the scope the Arrow function is defined within. from Arrow function e // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
     // Function declared in a loop contains unsafe references to variable(s) 'opacity', 'opacity'.eslintno-loop-func
-
     for (let i = 0; i < frames; i += 1) {
         // eslint-disable-next-line no-loop-func
         sleep(i * 100).then(() => {
@@ -100,7 +97,20 @@ function generateGrid(size = 32 * 44, cssClass = 'grid-medium-default') {
         containerGame.appendChild(div);
     }
 }
-console.dir(btnsSize, btnsMode);
+
+function erase() {
+    const containerGridChildren = document.querySelectorAll(
+        '#containerGrid > div',
+    ) as NodeListOf<HTMLDivElement>;
+
+    containerGridChildren.forEach((div) => {
+        div.style.backgroundColor = '#fbf1c7';
+        div.style.opacity = '1';
+    });
+
+    console.info('erase');
+}
+
 // endregion:   --- buttons ---
 // region:      --- events ---
 function createButtonSketching() {
@@ -112,10 +122,20 @@ function createButtonSketching() {
     btn.id = 'btnStartSketching';
     return btn;
 }
+// region:      --- erase event ---
+function eraseEvent() {
+    const btnErase = document.getElementById('btnErase') as HTMLButtonElement;
 
+    btnErase.addEventListener('click', erase);
+}
+
+// region:      --- game events ---
 function startSketchGame() {
     generateGrid();
     // startSketching(`classic`);
+    // changeSize();
+    // changeMode();
+    eraseEvent();
 }
 // region:      --- main ---
 export function main() {

@@ -360,7 +360,8 @@ button::before {
 }
 
 #containerGrid > div {
-    background-color: #d8d8d8;
+    /* background-color: #d8d8d8; */
+    background-color: #ebdbb2;
 }
 
 .grid-small {
