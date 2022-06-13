@@ -16,20 +16,19 @@
     --display-btns-size: inline-block;
 
     /* dimensions of #containerGrid > div children */
-    --grid-width-small: clamp(
-        1.1875rem,
-        1vw + 1rem,
-        2.4375rem
-    ); /* max is 39px */
-    --grid-height-small: clamp(1.1875rem, 1vw + 1rem, 2.4375rem);
-    --grid-width-medium: clamp(0.6rem, 1vw + 1rem, 1.1875rem); /* max is 19px */
-    --grid-height-medium: clamp(
-        0.6rem,
-        1vw + 1rem,
-        1.1875rem
-    ); /* max is 19px */ /* prettier-ignore */
-    --grid-width-large: clamp(0.25rem, 1vw + 1rem, 0.5625rem); /* max is 9px */
-    --grid-height-large: clamp(0.25rem, 1vw + 1rem, 0.5625rem); /* max is 9px */
+
+    /* prettier-ignore */
+    --grid-density-small-width: clamp( 1.1875rem, 1vw + 1rem, 2.4375rem); /* max is 39px */
+    /* prettier-ignore */
+    --grid-density-small-height: clamp(1.1875rem, 1vw + 1rem, 2.4375rem);
+    /* prettier-ignore */
+    --grid-density-medium-width: clamp(0.2rem, 0.5vw + 0.7rem, 3.5875rem);
+    /* prettier-ignore */
+    --grid-density-medium-height: clamp(0.2rem, 0.5vw + 0.7rem, 3.5875rem); /* max is 19px prettier-ignore */
+    /* prettier-ignore */
+    --grid-density-large-width: clamp( 0.25rem, 1vw + 1rem, 0.5625rem); /* max is 9px */
+    /* prettier-ignore */
+    --grid-density-large-height: clamp( 0.25rem, 1vw + 1rem, 0.5625rem); /* max is 9px */
 
     /* opacity to fade in/out elements on reset */
 
@@ -388,8 +387,8 @@ button::before {
 .grid-small > div {
     /* width: 39px; */
     /* height: 39px; */
-    width: var(--grid-width-small);
-    height: var(--grid-height-small);
+    width: var(--grid-density-small-width);
+    height: var(--grid-density-small-height);
 }
 
 .grid-medium-default {
@@ -398,8 +397,8 @@ button::before {
 .grid-medium-default > div {
     /* width: 19px; */
     /* height: 19px; */
-    width: var(--grid-width-medium);
-    height: var(--grid-width-medium);
+    width: var(--grid-density-medium-width);
+    height: var(--grid-density-medium-width);
 }
 
 .grid-big {
@@ -408,6 +407,6 @@ button::before {
 .grid-big > div {
     /* width: 9px; */
     /* height: 9px; */
-    width: var(--grid-width-large);
-    height: var(--grid-height-large);
+    width: var(--grid-density-large-width);
+    height: var(--grid-density-large-height);
 }
