@@ -11,6 +11,9 @@
     /* gap to add in flex buttons with javascript on click */
     --gap-btn: 0rem;
 
+    /* display none on buttons or opacity - to avoid layout changes, so focus on hover effect too... but lighthouse may find it odd */
+    --display-btns-mode: inline-block;
+    --display-btns-size: inline-block;
     /* opacity to fade in/out elements on reset */
     --fade: 1;
 
@@ -325,4 +328,61 @@ button::before {
     opacity: 1;
     transform-origin: 100px 100px;
     transform: scale(1) translate(-10px, -70px);
+}
+
+/* ************************************************************************* */
+/* ************************************************************************* */
+/* ****************************interactive buttons************************** */
+/* ************************************************************************* */
+/* ************************************************************************* */
+/* cspell:disable */
+#btnsMode {
+    display: var(--display-btns-mode);
+}
+
+#btnsSize {
+    display: var(--display-btns-size);
+}
+
+/* cspell:enable */
+
+/* ************************************************************************* */
+/* Game container */
+/* small(16x22) medium.default(32x44) big(64x88) */
+
+#containerGrid {
+    display: inline-grid;
+    border: solid #ff5e5b;
+    border-width: 6px 100px 0;
+    grid-gap: 1px;
+    background-color: #aaaaaa;
+    /* cursor: crosshair; */
+}
+
+#containerGrid > div {
+    background-color: #d8d8d8;
+}
+
+.grid-small {
+    grid-template-columns: repeat(22, auto);
+}
+.grid-small > div {
+    height: 39px;
+    width: 39px;
+}
+
+.grid-medium-default {
+    grid-template-columns: repeat(44, auto);
+}
+.grid-medium-default > div {
+    height: 19px;
+    width: 19px;
+}
+
+.grid-big {
+    grid-template-columns: repeat(88, auto);
+}
+.grid-big > div {
+    height: 9px;
+    width: 9px;
 }

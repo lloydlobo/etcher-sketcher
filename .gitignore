@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 _main.ts
 ideas.md
+inspiration/app.js
+inspiration/index.html
+inspiration/README.md
+inspiration/style/reset.css
+inspiration/style/style.css
