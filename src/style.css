@@ -14,7 +14,25 @@
     /* display none on buttons or opacity - to avoid layout changes, so focus on hover effect too... but lighthouse may find it odd */
     --display-btns-mode: inline-block;
     --display-btns-size: inline-block;
+
+    /* dimensions of #containerGrid > div children */
+    --grid-width-small: clamp(
+        1.1875rem,
+        1vw + 1rem,
+        2.4375rem
+    ); /* max is 39px */
+    --grid-height-small: clamp(1.1875rem, 1vw + 1rem, 2.4375rem);
+    --grid-width-medium: clamp(0.6rem, 1vw + 1rem, 1.1875rem); /* max is 19px */
+    --grid-height-medium: clamp(
+        0.6rem,
+        1vw + 1rem,
+        1.1875rem
+    ); /* max is 19px */ /* prettier-ignore */
+    --grid-width-large: clamp(0.25rem, 1vw + 1rem, 0.5625rem); /* max is 9px */
+    --grid-height-large: clamp(0.25rem, 1vw + 1rem, 0.5625rem); /* max is 9px */
+
     /* opacity to fade in/out elements on reset */
+
     --fade: 1;
 
     /* constants */
@@ -368,22 +386,28 @@ button::before {
     grid-template-columns: repeat(22, auto);
 }
 .grid-small > div {
-    height: 39px;
-    width: 39px;
+    /* width: 39px; */
+    /* height: 39px; */
+    width: var(--grid-width-small);
+    height: var(--grid-height-small);
 }
 
 .grid-medium-default {
     grid-template-columns: repeat(44, auto);
 }
 .grid-medium-default > div {
-    height: 19px;
-    width: 19px;
+    /* width: 19px; */
+    /* height: 19px; */
+    width: var(--grid-width-medium);
+    height: var(--grid-width-medium);
 }
 
 .grid-big {
     grid-template-columns: repeat(88, auto);
 }
 .grid-big > div {
-    height: 9px;
-    width: 9px;
+    /* width: 9px; */
+    /* height: 9px; */
+    width: var(--grid-width-large);
+    height: var(--grid-height-large);
 }
