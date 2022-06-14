@@ -413,7 +413,7 @@ function main() {
 }
 
 /// ! FOR DEBUGGING DEVELOPMENT ONLY !  // runOnce(main);
-startSketchGame(); // !!!! remove after debugging and serving for production
+// startSketchGame(); // !!!! remove after debugging and serving for production
 /// ! FOR DEBUGGING DEVELOPMENT ONLY !  // runOnce(main);
 
 main();
