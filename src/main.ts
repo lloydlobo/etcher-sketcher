@@ -71,6 +71,38 @@ async function fade(
 
 /// ////////////////////////////////////////////////////////////////////////////
 ///
+/// region:      --- HASHMAP DATA DIV ---
+///
+/// ////////////////////////////////////////////////////////////////////////////
+
+// eslint-disable-next-line no-unused-vars
+let hashMap = new Map();
+
+const getDivHashMap = (): Map<number, HTMLDivElement> => {
+  if (!hashMap) {
+    hashMap = new Map();
+  }
+  return hashMap;
+};
+let map: Map<number, HTMLDivElement>;
+// eslint-disable-next-line prefer-const
+map = getDivHashMap();
+console.dir({ map });
+
+function gridHashMap(index: number, gridChild: HTMLDivElement) {
+  // eslint-disable-next-line prefer-const
+  const result = getDivHashMap();
+  if (result) {
+    map.set(index, gridChild);
+  }
+  // track position of all div in the grid
+  hashMap.set(index, gridChild);
+
+  return hashMap;
+}
+
+/// ////////////////////////////////////////////////////////////////////////////
+///
 /// region:      --- GENERATE GRID ---
 ///
 /// ////////////////////////////////////////////////////////////////////////////
@@ -89,8 +121,10 @@ function generateGrid(size = 32 * 44, cssClass = 'grid-medium-default') {
   for (let i = 0; i < size; i += 1) {
     const div = document.createElement('div') as HTMLDivElement;
     containerGame.appendChild(div);
+    gridHashMap(i, div);
   }
 }
+console.dir({ hashMap });
 
 /// ////////////////////////////////////////////////////////////////////////////
 ///
@@ -118,7 +152,7 @@ function startSketching(mode: string) {
   );
   // Style the grid with the selected mode
   gridChildren.forEach((gridChild): void => {
-    gridChild.addEventListener('mousedown', (event): void => {
+    gridChild.addEventListener('mouseover', (event): void => {
       if (
         mode === MODE_CLASSIC ||
         modeCurrent === MODE_CLASSIC ||
