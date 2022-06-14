@@ -29,3 +29,8 @@ inspiration/index.html
 inspiration/README.md
 inspiration/style/reset.css
 inspiration/style/style.css
+src/app/ui/controller.element.ts
+.gitignore
+.gitignore
+src/app/ui/draggable-controller.ts
+src/app/ui/index.ts

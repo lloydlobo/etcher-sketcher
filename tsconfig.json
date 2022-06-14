@@ -1,12 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES2022",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
+    "lib": ["ESNext", "DOM"],
     "moduleResolution": "Node",
     "strict": true,
     "sourceMap": true,
@@ -18,14 +15,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "skipLibCheck": true,
-    "types": [
-      "vitest/globals",
-      "vitest/importMeta"
-    ]
+    "types": ["vitest/globals", "vitest/importMeta"]
   },
-  "include": [
-    "src",
-    "vite.config.ts",
-    "service-worker.js",
-  ]
+  "include": ["src", "vite.config.ts", "service-worker.js"]
 }
