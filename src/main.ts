@@ -37,6 +37,7 @@ const MODE_YIN = `yin`;
 const MODE_YANG = `yang`;
 const MODE_ZEN = `zen`;
 
+const RESET_BACKGROUND_COLOR = '#EBDBB2';
 // region:      --- style ---
 
 export const styleAddClassBtn = ['shrink-border', 'material-bubble'];
@@ -96,7 +97,7 @@ function erase() {
     const containerGridChildren = document.querySelectorAll( '#containerGrid > div',) as NodeListOf<HTMLDivElement>; // prettier-ignore
 
     containerGridChildren.forEach((div) => {
-        div.style.backgroundColor = '#fbf1c7';
+        div.style.backgroundColor = RESET_BACKGROUND_COLOR;
         div.style.opacity = '1';
     });
 
@@ -111,12 +112,14 @@ function erase() {
 
 function startSketching(mode: string) {
     const gridChildren = document.querySelectorAll('#containerGrid > div');
-    console.dir(gridChildren);
-    console.log(gridChildren.length);
 
     gridChildren.forEach((gridChild): void => {
-        // child.count = 0; // console.log(child); // => <div></div>
-        gridChild.addEventListener('click', (event): void => {
+        (gridChild as HTMLDivElement).oncontextmenu = () => {
+            (gridChild as HTMLDivElement).style.backgroundColor =
+                RESET_BACKGROUND_COLOR;
+            (gridChild as HTMLDivElement).style.opacity = '1';
+        }; // console.log(child); // => <div></div>
+        gridChild.addEventListener('mousedown', (event): void => {
             if (
                 mode === MODE_CLASSIC ||
                 modeCurrent === MODE_CLASSIC ||
@@ -128,10 +131,22 @@ function startSketching(mode: string) {
                 (event.target as HTMLDivElement).style.backgroundColor = '#fbf1c7'; // prettier-ignore
             }
         });
+        // disables the context-menu event while right-clicking on the div
+        gridChild.addEventListener('contextmenu', (e) => {
+            // https://developer.mozilla.org/en-US/docs/Web/API/Element/contextmenu_event
+            e.preventDefault();
+            // e.stopPropagation();
+            // e.stopImmediatePropagation();
+            console.log(e);
+        });
     });
 }
 
-// startSketching(`classic`);
+// cspell:disable-next-line
+// immutable data structures --> mori, immutable.js for PERSISTANT DATA STRUCTURES ... other FP lib are underscore Lodash Ramda.... --> Context: JSUnconf Anana Vakil Learn Functional Programming WIt Javascript
+// https://crates.io/crates/persistence Rust lib does something similar?
+
+startSketching(`classic`);
 
 // endregion:   --- buttons ---
 // region:      --- events ---
