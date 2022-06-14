@@ -113,6 +113,11 @@
     --aqua-dim: #689d6a;
     --gray-dim: #a89984;
     --orange-dim: #d65d0e;
+
+    /* custom color control with javascript */
+    --grid-border-color: var(--bg);
+    --grid-border-color-dim: var(--bg-dim);
+    --grid-border-radius: var(--font-size-400);
 }
 
 *,
@@ -369,8 +374,9 @@ button::before {
 
 #containerGrid {
     display: inline-grid;
-    border: solid #ff5e5b;
-    border-width: 6px 100px 0;
+    border: calc(9 / 16 * 3vw) solid var(--grid-border-color); /* 16:9 ratio -> ff5e5b  */
+    border-radius: var(--grid-border-radius);
+    /* border-width: 6px 100px 0; */
     grid-gap: 1px;
     background-color: #aaaaaa;
     /* cursor: crosshair; */
