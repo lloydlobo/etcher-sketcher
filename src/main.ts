@@ -38,6 +38,29 @@ const MODE_YANG = `yang`;
 const MODE_ZEN = `zen`;
 
 const RESET_BACKGROUND_COLOR = '#EBDBB2';
+
+const MODE_SELECT_STYLE = {
+    [MODE_CLASSIC]: {
+        backgroundColor: '#fbf1c7',
+        opacity: '1',
+    },
+    [MODE_INSPIRED]: {
+        backgroundColor: '#fbf1c7',
+        opacity: '1',
+    },
+    [MODE_YIN]: {
+        backgroundColor: '#fbf1c7',
+        opacity: '1',
+    },
+    [MODE_YANG]: {
+        backgroundColor: '#fbf1c7',
+        opacity: '1',
+    },
+    [MODE_ZEN]: {
+        backgroundColor: '#fbf1c7',
+        opacity: '1',
+    },
+};
 // region:      --- style ---
 
 export const styleAddClassBtn = ['shrink-border', 'material-bubble'];
@@ -111,33 +134,32 @@ function erase() {
 /// ////////////////////////////////////////////////////////////////////////////
 
 function startSketching(mode: string) {
-    const gridChildren = document.querySelectorAll('#containerGrid > div');
+    const gridChildren = document.querySelectorAll('#containerGrid > div') as NodeListOf<HTMLDivElement>; // prettier-ignore
 
     gridChildren.forEach((gridChild): void => {
-        (gridChild as HTMLDivElement).oncontextmenu = () => {
-            (gridChild as HTMLDivElement).style.backgroundColor =
-                RESET_BACKGROUND_COLOR;
-            (gridChild as HTMLDivElement).style.opacity = '1';
-        }; // console.log(child); // => <div></div>
         gridChild.addEventListener('mousedown', (event): void => {
             if (
                 mode === MODE_CLASSIC ||
                 modeCurrent === MODE_CLASSIC ||
                 modeCurrent === ''
             ) {
-                console.dir(typeof event.target); // => object
-                console.dir(event.target); // => <div></div>
                 // https://stackoverflow.com/questions/66255166/expected-str-found-char-with-rust // https://angular.io/docs/ts/latest/guide/user-input.html#!#type-the--*event*
-                (event.target as HTMLDivElement).style.backgroundColor = '#fbf1c7'; // prettier-ignore
+                (event.target as HTMLDivElement).style.backgroundColor =
+                    MODE_SELECT_STYLE[MODE_CLASSIC].backgroundColor;
             }
         });
+
+        // erase the color of clicked div to default
+        (gridChild as HTMLDivElement).oncontextmenu = () => {
+            (gridChild as HTMLDivElement).style.backgroundColor =
+                RESET_BACKGROUND_COLOR;
+            (gridChild as HTMLDivElement).style.opacity = '1';
+        }; // => <div></div>
+
         // disables the context-menu event while right-clicking on the div
         gridChild.addEventListener('contextmenu', (e) => {
             // https://developer.mozilla.org/en-US/docs/Web/API/Element/contextmenu_event
-            e.preventDefault();
-            // e.stopPropagation();
-            // e.stopImmediatePropagation();
-            console.log(e);
+            e.preventDefault(); // e.stopPropagation(); // e.stopImmediatePropagation();
         });
     });
 }
