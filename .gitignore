@@ -34,3 +34,4 @@ src/app/ui/controller.element.ts
 .gitignore
 src/app/ui/draggable-controller.ts
 src/app/ui/index.ts
+deploy.sh
