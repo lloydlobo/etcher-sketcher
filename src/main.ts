@@ -25,6 +25,18 @@ ${heading1}
 
 // endregion:   --- app ---
 
+/// //////////////////////////////////////////////////////////////////////////////
+///
+/// region:      --- constants ---
+///
+/// /////////////////////////////////////////////////////////////////////////////////
+
+const MODE_CLASSIC = `classic`;
+const MODE_INSPIRED = `inspired`;
+const MODE_YIN = `yin`;
+const MODE_YANG = `yang`;
+const MODE_ZEN = `zen`;
+
 // region:      --- style ---
 
 export const styleAddClassBtn = ['shrink-border', 'material-bubble'];
@@ -58,27 +70,10 @@ async function fade(
 const btnsSize = document.querySelectorAll( '#btnsSize') as NodeListOf<HTMLButtonElement>; // prettier-ignore
 const btnsMode = document.querySelectorAll('#btnsMode') as NodeListOf<HTMLButtonElement>; // prettier-ignore
 
-let presentMode = '';
-
-function createGrid(size = 32 * 44, classCSS = 'grid-medium-default') {
-    const containerGame = document.getElementById(
-        'containerGrid',
-    ) as HTMLDivElement;
-
-    containerGame.innerHTML = '';
-
-    containerGame?.classList.remove(
-        `grid-small`,
-        `grid-medium-default`,
-        `grid-big`,
-    );
-}
+let modeCurrent = '';
 
 function generateGrid(size = 32 * 44, cssClass = 'grid-medium-default') {
-    const containerGame = document.getElementById(
-        'containerGrid',
-    ) as HTMLDivElement;
-
+    const containerGame = document.getElementById( 'containerGrid',) as HTMLElement; // prettier-ignore
     containerGame.innerHTML = '';
 
     containerGame.classList.remove(
@@ -88,20 +83,17 @@ function generateGrid(size = 32 * 44, cssClass = 'grid-medium-default') {
     );
     containerGame.classList.add(cssClass);
 
-    // smooth animation that fades in as grid is
-    // generated with css on event btnStartSketch
+    // smooth animation that fades in as grid is generated with css on event btnStartSketch
     fade(containerGame, 0.1, 0, 10);
 
     for (let i = 0; i < size; i += 1) {
         const div = document.createElement('div');
-        containerGame.appendChild(div);
+        containerGame!.appendChild(div);
     }
 }
 
 function erase() {
-    const containerGridChildren = document.querySelectorAll(
-        '#containerGrid > div',
-    ) as NodeListOf<HTMLDivElement>;
+    const containerGridChildren = document.querySelectorAll( '#containerGrid > div',) as NodeListOf<HTMLDivElement>; // prettier-ignore
 
     containerGridChildren.forEach((div) => {
         div.style.backgroundColor = '#fbf1c7';
@@ -110,6 +102,36 @@ function erase() {
 
     console.info('erase');
 }
+
+/// ////////////////////////////////////////////////////////////////////////////
+///
+/// region:      --- start sketching ---
+///
+/// ////////////////////////////////////////////////////////////////////////////
+
+function startSketching(mode: string) {
+    const gridChildren = document.querySelectorAll('#containerGrid > div');
+    console.dir(gridChildren);
+    console.log(gridChildren.length);
+
+    gridChildren.forEach((gridChild): void => {
+        // child.count = 0; // console.log(child); // => <div></div>
+        gridChild.addEventListener('click', (event): void => {
+            if (
+                mode === MODE_CLASSIC ||
+                modeCurrent === MODE_CLASSIC ||
+                modeCurrent === ''
+            ) {
+                console.dir(typeof event.target); // => object
+                console.dir(event.target); // => <div></div>
+                // https://stackoverflow.com/questions/66255166/expected-str-found-char-with-rust // https://angular.io/docs/ts/latest/guide/user-input.html#!#type-the--*event*
+                (event.target as HTMLDivElement).style.backgroundColor = '#fbf1c7'; // prettier-ignore
+            }
+        });
+    });
+}
+
+// startSketching(`classic`);
 
 // endregion:   --- buttons ---
 // region:      --- events ---
@@ -132,13 +154,13 @@ function eraseEvent() {
 // region:      --- game events ---
 function startSketchGame() {
     generateGrid();
-    // startSketching(`classic`);
+    startSketching(`classic`);
     // changeSize();
     // changeMode();
     eraseEvent();
 }
 // region:      --- main ---
-export function main() {
+function main() {
     createButtonSketching();
     sleep(0).then(() => {
         console.clear();
@@ -159,6 +181,11 @@ export function main() {
         { once: true }, // https://www.educative.io/answers/how-to-ensure-an-event-listener-is-only-fired-once-in-javascript
     );
 }
+
+// ! FOR DEBUGGING DEVELOPMENT ONLY !
+// runOnce(main);
+// remove after debugging and serving for production
+startSketchGame(); // <<<<<<<<<<<<<<<<<<< DEBUG ONLY >>>>>>>>>>>>>>>>>>>>>>>> !!!
 
 main();
 
