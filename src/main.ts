@@ -441,7 +441,8 @@ function main() {
   const btnStartSketching = document.getElementById( `btnStartSketching`,) as HTMLButtonElement; // prettier-ignore
   // prettier-ignore
   btnStartSketching.addEventListener( 'mousedown', () => {
-    sleep(300).then(() => startSketchGame());
+    btnStartSketching.remove();
+    sleep(100).then(() => startSketchGame());
     colorDivHashMap(MODE_SELECT_STYLE[MODE_CLASSIC].backgroundColor);
     },
     { once: true },
