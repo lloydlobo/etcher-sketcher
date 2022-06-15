@@ -24,32 +24,73 @@
   </head>
   <body>
     <main role="main" id="main">
-      <div id="app"></div>
+      <div id="app" class="main__app"></div>
 
       <!-- inspired -->
-      <div id="containerGrid" class="grid-medium-default"></div>
+      <div
+        id="containerGrid"
+        class="main__container-grid grid-medium-default"
+      ></div>
 
-      <div data-hidden="true" id="#controls" class="controls">
-        <div class="buttons-controls">
+      <div data-hidden="true" id="#controls" class="main__controls">
+        <div class="main__controls__btns-size buttons-controls">
           <!-- <p>Grid density:</p> -->
-          <button id="btnsSize" class="size small">Small</button>
-          <button id="btnsSize" class="size medium">Medium</button>
-          <button id="btnsSize" class="size big">Large</button>
+          <button
+            id="btnsSize"
+            class="main__controls__btns-size__small size small"
+          >
+            Small
+          </button>
+          <button
+            id="bttnsSize"
+            class="main__controls__btns-size__medium size medium"
+          >
+            Medium
+          </button>
+          <button
+            id="btnsSize"
+            class="main__controls__btns-size__large size big"
+          >
+            Large
+          </button>
         </div>
-        <button id="btnErase" class="erase buttons-controls">Shake</button>
-        <div class="mode-controls buttons-controls">
+        <button
+          id="btnErase"
+          class="main__controls__btn-erase erase buttons-controls"
+        >
+          Shake
+        </button>
+        <div class="main__controls__btns-mode mode-controls buttons-controls">
           <!-- <p>Mode:</p> -->
-          <button id="btnsMode" class="mode classic">Classic</button>
-          <button id="btnsMode" class="mode modern">Modern</button>
-          <button id="btnsMode" class="mode psychedelic">Zen</button>
+          <button
+            id="btnsMode"
+            class="main__controls__btns-mode__classic mode classic"
+          >
+            Classic
+          </button>
+          <button
+            id="btnsMode"
+            class="main__controls__btns-mode__modern mode modern"
+          >
+            Modern
+          </button>
+          <button id="btnsMode" class="main__controls__btns-mode__zen mode zen">
+            Zen
+          </button>
         </div>
-        <div id="controllerDraggable"></div>
+        <div
+          id="controllerDraggable"
+          class="main__controls__draggable-controller"
+        ></div>
       </div>
 
       <!-- inspired -->
     </main>
-    <footer id="footer">
-      &copy <a href="https://github.com/lloydlobo">Lloyd Lobo</a>
+    <footer id="footer" class="footer">
+      &copy
+      <a class="footer__author-link" href="https://github.com/lloydlobo"
+        >Lloyd Lobo</a
+      >
       <!-- | Project for <a href="https://theodinproject.com">The Odin Project</a> -->
     </footer>
     <script type="module" src="/src/main.ts"></script>
