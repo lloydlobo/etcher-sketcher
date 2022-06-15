@@ -419,3 +419,39 @@ button::before {
   width: var(--grid-density-large-width);
   height: var(--grid-density-large-height);
 }
+
+/* ************************************************************************* */
+/*  
+    ***
+    *** region: --- CONTROLS UI ---
+    ***
+*/
+/* ************************************************************************* */
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* gap: 75px; */
+}
+
+.buttons-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+button.buttons-controls,
+.buttons-controls > button {
+  /* border-radius: var(--border-radius); */
+  /* background-color: #d8d8d8; */
+  background-color: var(--bg_h);
+  padding-block: var(--font-size-200);
+  padding-inline: var(--font-size-100);
+  font-size: var(--font-size-300);
+  color: var(--fg2);
+
+  text-transform: lowercase;
+}
