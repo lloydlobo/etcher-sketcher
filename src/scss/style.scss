@@ -181,6 +181,14 @@
   --gray-dim: #a89984;
   --orange-dim: #d65d0e;
 
+  //
+  //
+  /// THEME TOGGLE
+  //
+  //
+
+  --theme-toggle-fill-color: var(--yellow-dim);
+  --theme-toggle-color: var(--yellow);
   /******************************************************************************
   ***
   *** DOM MANIPULATION WITH JAVASCRIPT
@@ -215,17 +223,6 @@
   --font-size-fluid-2: clamp(1.5rem, 3vw, 2.5rem);
   --font-size-fluid-3: clamp(2rem, 4vw, 3.5rem);
 
-  // --size-fluid-1: clamp(0.5rem, 1vw, 1rem);
-  // --size-fluid-2: clamp(1rem, 2vw, 1.5rem);
-  // --size-fluid-3: clamp(1.5rem, 3vw, 2rem);
-  // --size-fluid-4: clamp(2rem, 4vw, 3rem);
-  // --size-fluid-5: clamp(4rem, 5vw, 5rem);
-  // --size-fluid-6: clamp(5rem, 7vw, 7.5rem);
-  // --size-fluid-7: clamp(7.5rem, 10vw, 10rem);
-  // --size-fluid-8: clamp(10rem, 20vw, 15rem);
-  // --size-fluid-9: clamp(15rem, 30vw, 20rem);
-  // --size-fluid-10: clamp(20rem, 40vw, 30rem);
-
   /* custom color control with javascript */
   --grid-border-color: var(--bg);
   --grid-border-color-dim: var(--bg-dim);
@@ -237,14 +234,17 @@
   --grid-child-border-width: 0.0625rem;
   --grid-child-border-style: solid;
 
-  // --grid-border-color: var(--bg-dim);
   /* Thick border on etch sketch containerGrid to emulate etch-a-sketch */
   --container-border: 0;
+
   // background color of containerGrid to blend with border (it's a very thin line)
   --container-grid-bg: var(--bg_s);
+
   /* opacity to fade in/out elements on reset */
   --fade: 1;
+
   --fade-main-heading: 0;
+
   --fade-btn-get-inspired: 0;
 } /* end of: :root */
 
@@ -636,3 +636,41 @@ button[data-button-style-none] {
 /* .buttons-controls {
   display: none;
 } */
+
+/// ///////////////////////////////////////////////////////////////////////////
+///
+/// region: HELPER CLASSES UTILITIES
+///
+/// ///////////////////////////////////////////////////////////////////////////
+
+.hidden {
+  display: none;
+}
+
+/// ///////////////////////////////////////////////////////////////////////////
+///
+/// region: THEME (data-theme)
+///
+/// ///////////////////////////////////////////////////////////////////////////
+@media (dynamic-range: high) {
+  [data-theme='dark'] {
+    --bg: #1d1d1d;
+    --fg: #fafafa;
+  }
+}
+[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: var(--bg_h);
+  --fg: var(--fg);
+}
+
+#themeToggle {
+  background-color: none;
+} // .nav__theme_toggle
+
+.nav__theme-toggle__svg__sun {
+  fill: var(--theme-toggle-fill-color, var(--yellow-dim));
+  color: var(--theme-toggle-color, var(--yellow));
+  width: var(--theme-toggle-width, var(--font-size-700));
+  height: var(--theme-toggle-height, var(--font-size-700));
+}
