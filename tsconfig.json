@@ -17,5 +17,10 @@
     "skipLibCheck": true,
     "types": ["vitest/globals", "vitest/importMeta"]
   },
-  "include": ["src", "vite.config.ts", "service-worker.js"]
+  "include": [
+    "src",
+    "vite.config.ts",
+    "service-worker.js",
+    "node_modules/hashMap.ts"
+  ]
 }

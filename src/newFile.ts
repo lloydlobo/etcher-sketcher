@@ -1,7 +1,7 @@
 import { getRandomQuote } from './app/features';
-import { createButtonInspired } from './createButtonInspired';
+import { createButtonInspired } from './app/ui/createButtonInspired';
 
 const btnGetInspired = createButtonInspired();
 btnGetInspired.addEventListener('click', async () => {
-    await getRandomQuote('zen');
+  await getRandomQuote('zen');
 });

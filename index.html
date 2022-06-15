@@ -27,6 +27,14 @@
     <header>
       <nav>
         <button
+          id="btnGetInspired"
+          data-transparent="true"
+          data-button-style-none="true"
+          class="nav__btn-get-inspired"
+        >
+          etcher sketcher
+        </button>
+        <button
           id="themeToggle"
           data-button-style-none
           aria-live="dark"
@@ -67,7 +75,9 @@
       </nav>
     </header>
     <main role="main" id="main">
-      <h1 class="heading">etcher sketcher</h1>
+      <h1 id="mainHeading" data-transparent="false" class="main__heading">
+        etcher sketcher
+      </h1>
       <button
         id="btnStartSketching"
         class="main__btn-start-sketch shrink-border material-bubble"

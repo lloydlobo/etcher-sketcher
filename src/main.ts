@@ -6,7 +6,10 @@ import {
   reflectPreference,
   theme,
   setPreference,
+  gridHashMap,
 } from './app'; // import { createButtonInspired } from './createButtonInspired';
+import { fade } from './app/helper/fade';
+import { getRandomNumber } from './app/helper/get-random-number';
 
 console.log(ThemeToggle);
 
@@ -36,6 +39,9 @@ console.log(ThemeToggle);
 /// /////////////////////////////////////////////////////////////////////////////////
 
 const ROOT = document.querySelector(':root') as HTMLElement;
+const mainHeading = document.getElementById(
+  'mainHeading',
+) as HTMLHeadingElement;
 // const app = document.querySelector<HTMLDivElement>('#app')!;
 // const heading1 = `<h1 class="heading">etcher sketcher</h1>`;
 // app.innerHTML = ` ${heading1} `;
@@ -43,9 +49,10 @@ const ROOT = document.querySelector(':root') as HTMLElement;
 
 const MODE_CLASSIC = `classic`;
 const MODE_MODERN = `modern`;
+const MODE_ZEN = `zen`;
+
 const MODE_YIN = `yin`;
 const MODE_YANG = `yang`;
-const MODE_ZEN = `zen`;
 
 const RESET_BACKGROUND_COLOR = '#EBDBB2';
 
@@ -53,20 +60,7 @@ const RESET_BACKGROUND_COLOR = '#EBDBB2';
 const MODE_SELECT_STYLE = {
   [MODE_CLASSIC]: { backgroundColor: '#fbf1c7', opacity: '1' },
   [MODE_MODERN]: {
-    colorPallette: [
-      '#fbf1c7',
-      '#f7f1c7',
-      '#f3f1c7',
-      '#f0f1c7',
-      '#ecf1c7',
-      '#e8f1c7',
-      '#e4f1c7',
-      '#e0f1c7',
-      '#dcf1c7',
-      '#d8f1c7',
-      '#d4f1c7',
-      '#d0f1c7',
-    ],
+    colorPallette: [ '#fbf1c7', '#f7f1c7', '#f3f1c7', '#f0f1c7', '#ecf1c7', '#e8f1c7', '#e4f1c7', '#e0f1c7', '#dcf1c7', '#d8f1c7', '#d4f1c7', '#d0f1c7', ], // prettier-ignore
     opacity: '1',
   },
   [MODE_YIN]: { backgroundColor: '#fbf1c7', opacity: '1' },
@@ -75,7 +69,6 @@ const MODE_SELECT_STYLE = {
 }; // prettier-ignore-end
 
 let modeCurrent = '';
-modeCurrent = '';
 
 /// ////////////////////////////////////////////////////////////////////////////
 ///
@@ -89,71 +82,15 @@ const controls = document.querySelector('.main__controls') as HTMLDivElement;
 const btnsSize = document.querySelectorAll<HTMLButtonElement>('#btnsSize');
 const btnsMode = document.querySelectorAll<HTMLButtonElement>('#btnsMode');
 
-const allBtnsSizeAndMode = document.querySelectorAll<HTMLButtonElement>(
-  '#btnsSize, #btnsMode #btnErase',
-);
-console.log(allBtnsSizeAndMode);
+const btnGetInspired = document.getElementById(
+  'btnGetInspired',
+) as HTMLButtonElement;
 
-// const BTNS_CONTROLS = [btnsSize, btnsMode];
-// export const styleAddClassBtn = ['shrink-border', 'material-bubble'];
+// const allBtnsSizeAndMode = document.querySelectorAll<HTMLButtonElement>(
+//   '#btnsSize, #btnsMode #btnErase',
+// );
 
-/// ////////////////////////////////////////////////////////////////////////////
-///
-/// region:      --- HELPER FUNCTIONS ---
-///
-/// ////////////////////////////////////////////////////////////////////////////
-
-async function fade(
-  element: HTMLElement,
-  speed = 0.1,
-  opacity = 0,
-  frames = 10,
-) {
-  // Function declared in a loop contains unsafe references to variable(s) 'opacity'
-  for (let i = 0; i < frames; i += 1) {
-    // eslint-disable-next-line no-loop-func
-    sleep(i * 100).then(() => {
-      element.style.opacity = opacity.toString();
-      opacity += speed;
-    });
-  }
-}
-
-function getRandomNumber(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-/// ////////////////////////////////////////////////////////////////////////////
-///
-/// region:      --- HASHMAP DATA DIV ---
-///
-/// ////////////////////////////////////////////////////////////////////////////
-
-// eslint-disable-next-line no-unused-vars
-let hashMap = new Map();
-
-const getDivHashMap = (): Map<number, HTMLDivElement> => {
-  if (!hashMap) {
-    hashMap = new Map();
-  }
-  return hashMap;
-};
-let map: Map<number, HTMLDivElement>;
-// eslint-disable-next-line prefer-const
-map = getDivHashMap();
-console.dir({ map });
-
-function gridHashMap(index: number, gridChild: HTMLDivElement) {
-  // eslint-disable-next-line prefer-const
-  const result = getDivHashMap();
-  if (result) {
-    map.set(index, gridChild);
-  }
-  // track position of all div in the grid
-  hashMap.set(index, gridChild);
-
-  return hashMap;
-}
+// console.log(allBtnsSizeAndMode);
 
 /// ////////////////////////////////////////////////////////////////////////////
 ///
@@ -169,45 +106,18 @@ function createContainerGridBorder() {
 function generateGrid(size = 32 * 44, cssClass = 'grid-medium-default') {
   const containerGame = document.getElementById('containerGrid') as HTMLElement;
   containerGame.innerHTML = '';
-  containerGame.classList.remove(
-    'grid-small',
-    'grid-medium-default',
-    'grid-big',
-  );
+  containerGame.classList.remove( 'grid-small', 'grid-medium-default', 'grid-big',); // prettier-ignore
+
   createContainerGridBorder();
   containerGame.classList.add(cssClass);
-  // smooth animation that fades in as grid is generated with css on event btnStartSketch
-  fade(containerGame, 0.1, 0, 10);
+  fade(containerGame, 0.1, 0, 10); // smooth animation that fades in as grid is generated with css on event btnStartSketch
+
   for (let i = 0; i < size; i += 1) {
     const div = document.createElement('div') as HTMLDivElement;
     containerGame.appendChild(div);
     gridHashMap(i, div);
   }
 }
-console.dir({ hashMap });
-
-/// ////////////////////////////////////////////////////////////////////////////
-///
-/// region:      --- GENERATE ARRAY COORDINATES ---
-///
-/// ////////////////////////////////////////////////////////////////////////////
-
-let circleLinearArrayOfSize = [];
-let circleLinearArrayOfCoordinates = [];
-function generateCircleLinearArrayOfCoordinates(size = 32 * 44) {
-  circleLinearArrayOfSize = [];
-  circleLinearArrayOfCoordinates = [];
-  for (let i = 0; i < size; i += 1) {
-    circleLinearArrayOfSize.push(i);
-    circleLinearArrayOfCoordinates.push(i);
-  }
-}
-function startStencil(mode = `classic`) {
-  generateCircleLinearArrayOfCoordinates();
-  // eslint-disable-next-line no-param-reassign
-  modeCurrent = mode;
-}
-startStencil();
 
 /// ////////////////////////////////////////////////////////////////////////////
 ///
@@ -225,71 +135,43 @@ function erase() {
 
 /// ////////////////////////////////////////////////////////////////////////////
 ///
-/// region:      --- EVENT LISTENERS MOUSE SKETCH ---
+/// region:      --- START SKETCHING EVENT LISTEN ---
 ///
 /// ////////////////////////////////////////////////////////////////////////////
 
 function startSketching(mode: string) {
-  const gridChildren = document.querySelectorAll<HTMLDivElement>(
-    '#containerGrid > div',
-  );
+  const gridChildren = document.querySelectorAll<HTMLDivElement>( '#containerGrid > div',); // prettier-ignore
+
   // Style the grid with the selected mode
   gridChildren.forEach((gridChild): void => {
-    // gridChild.style.backgroundColor = RESET_BACKGROUND_COLOR;
-
-    /// /////////////////////////////////////////////////////////////////////////////
-    ///
-    /// region:      --- STYLE GRID ---
-    ///
-    /// /////////////////////////////////////////////////////////////////////////////
     gridChild.addEventListener('mouseover', (event): void => {
-      if (
-        mode === MODE_CLASSIC ||
-        modeCurrent === MODE_CLASSIC ||
-        modeCurrent === ''
-      ) {
-        (event.target as HTMLDivElement).style.backgroundColor =
-          MODE_SELECT_STYLE[MODE_CLASSIC].backgroundColor;
+      const modeIsClassic = mode === MODE_CLASSIC || modeCurrent === MODE_CLASSIC || modeCurrent === ''; // prettier-ignore
+      const modeIsModern = mode === MODE_MODERN;
+      const modeIsZen = mode === MODE_ZEN || modeCurrent === MODE_ZEN;
 
+      if (modeIsClassic) {
+        (event.target as HTMLDivElement).style.backgroundColor = MODE_SELECT_STYLE[MODE_CLASSIC].backgroundColor; // prettier-ignore
         (event.target as HTMLDivElement).style.opacity = '1';
-      } else if (mode === MODE_MODERN) {
+      } else if (modeIsModern) {
         (event.target as HTMLDivElement).style.backgroundColor =
-          MODE_SELECT_STYLE[MODE_MODERN].colorPallette[
-            getRandomNumber(
-              0,
-              MODE_SELECT_STYLE[MODE_MODERN].colorPallette.length - 1,
-            )
-          ];
-      } else if (mode === MODE_ZEN || modeCurrent === MODE_ZEN) {
-        const zenPallette = [
-          '#EF476F',
-          '#FFD166',
-          '#06D6A0',
-          '#118AB2',
-          '#073B4C',
-        ];
-        const randomColor =
-          zenPallette[Math.floor(Math.random() * zenPallette.length)];
+          MODE_SELECT_STYLE[MODE_MODERN].colorPallette[ getRandomNumber( 0, MODE_SELECT_STYLE[MODE_MODERN].colorPallette.length - 1,) ]; // prettier-ignore
+      } else if (modeIsZen) {
+        const zenPallette = [ '#EF476F', '#FFD166', '#06D6A0', '#118AB2', '#073B4C', ]; // prettier-ignore
+        const randomColor = zenPallette[Math.floor(Math.random() * zenPallette.length)]; // prettier-ignore
         (event.target as HTMLDivElement).style.backgroundColor = randomColor;
         (event.target as HTMLDivElement).style.opacity = '1';
       }
     }); // end of mouseover event listener
 
-    /// /////////////////////////////////////////////////////////////////////////
-    ///
-    /// region:      --- EVENT LISTENERS MOUSE SKETCH ---
-    ///
-    /// ////////////////////////////////////////////////////////////////////////////
-
-    // erase the color of clicked div to default
+    // Erase the color of clicked div to default
     (gridChild as HTMLDivElement).oncontextmenu = () => {
       (gridChild as HTMLDivElement).style.backgroundColor = RESET_BACKGROUND_COLOR; // prettier-ignore
       (gridChild as HTMLDivElement).style.opacity = '1';
     };
 
-    // disables the context-menu event while right-clicking on the div
+    // Disable the context-menu event while right-clicking on the div
     gridChild.addEventListener('contextmenu', (e) => e.preventDefault()); // e.stopPropagation(); // e.stopImmediatePropagation(); // https://developer.mozilla.org/en-US/docs/Web/API/Element/contextmenu_event
-  }); // gridChildren.forEach
+  }); // end of gridChildren.forEach
 } // end of function startSketching(mode: string)
 
 /// ////////////////////////////////////////////////////////////////////////////
@@ -300,15 +182,22 @@ function startSketching(mode: string) {
 
 function chooseButton(button: HTMLButtonElement) {
   if (button.classList.contains('mode')) {
-    btnsMode.forEach((btnMode) => {
-      btnMode.classList.remove('btn-active');
-    });
+    btnsMode.forEach((btnMode) => btnMode.classList.remove('btn-active'));
   } else {
-    btnsSize.forEach((btnSize) => {
-      btnSize.classList.remove('btn-active');
-    });
+    btnsSize.forEach((btnSize) => btnSize.classList.remove('btn-active'));
   }
   button.classList.add('btn-active');
+}
+
+function refreshGridWithNewSize(
+  SMALL: number,
+  btnSize: HTMLButtonElement,
+  btnClass: string,
+) {
+  erase();
+  generateGrid(SMALL, btnClass);
+  startSketching(MODE_CLASSIC);
+  chooseButton(btnSize);
 }
 
 function chooseSize() {
@@ -321,10 +210,7 @@ function chooseSize() {
   btnsSize.forEach((btnSize) => {
     btnSize.addEventListener('click', () => {
       if (btnSize.classList.contains('small')) {
-        erase();
-        generateGrid(SMALL, 'grid-small');
-        startSketching(MODE_CLASSIC);
-        chooseButton(btnSize);
+        refreshGridWithNewSize(SMALL, btnSize, 'grid-small');
       } else if (btnSize.classList.contains('medium')) {
         erase();
         generateGrid(MEDIUM, 'grid-medium-default');
@@ -392,35 +278,31 @@ function eraseEvent() {
   btnErase.addEventListener('click', erase);
 }
 
-/// ////////////////////////////////////////////////////////////////////////////
-///
-// region:      --- HASH MAP STENCIL ---
-///
-/// ////////////////////////////////////////////////////////////////////////////
-
-function colorDivHashMap(color: string) {
-  const gridChildren = document.querySelectorAll<HTMLDivElement>(
-    '#containerGrid > div',
-  );
-  map.forEach((index) => {
-    console.log({ index });
-    const arr = new Array(index);
-    // pick out div with the index value which matches the sequence in an array
-    if (index === hashMap.keys().next().value) {
-      gridChildren.forEach((gridChild) => {
-        arr.push(gridChild);
-      });
-      arr.forEach((gridChild) => {
-        gridChild.style.backgroundColor = color;
-      });
-
-      console.log({ index });
-    }
-  });
-}
-
 function displayAllControlButtons() {
   controls.dataset.hidden = 'false';
+}
+
+interface HTMLOrSVGElement {
+  autofocus: boolean;
+  readonly dataset: DOMStringMap;
+  nonce?: string;
+  tabIndex: number;
+  blur(): void;
+  // focus(options?: FocusOptions): void;
+}
+
+function changeDatasetState(
+  data: HTMLOrSVGElement,
+  attribute: string,
+  state: boolean,
+) {
+  if (state) {
+    data.dataset[attribute] = 'true';
+  } else {
+    data.dataset[attribute] = 'false';
+  }
+  // if (state) data.dataset.attribute = 'true';
+  // else data.dataset.hidden = 'false';
 }
 
 function displayGridLayout() {
@@ -481,15 +363,15 @@ function main() {
   const btnStartSketching = document.getElementById( `btnStartSketching`,) as HTMLButtonElement; // prettier-ignore
   // prettier-ignore
   btnStartSketching.addEventListener( 'mousedown', () => {
-      btnStartSketching.remove();
+        btnStartSketching.remove();
+        changeDatasetState(mainHeading, `transparent`, true);
+        changeDatasetState(btnGetInspired, `transparent`, false);
       sleep(100).then(() => startSketchGame());
-      colorDivHashMap(MODE_SELECT_STYLE[MODE_CLASSIC].backgroundColor);
-    sleep(10000).then(() => { reflectPreference(); // helps to avoid flashing the page when the user changes the theme or onload
-      toggleThemeOnWindowLoad()
-    });
     },
     { once: true },
     )
+  reflectPreference(); // helps to avoid flashing the page when the user changes the theme or onload
+  toggleThemeOnWindowLoad();
 }
 
 main();

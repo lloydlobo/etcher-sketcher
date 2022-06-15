@@ -244,6 +244,8 @@
   --container-grid-bg: var(--bg_s);
   /* opacity to fade in/out elements on reset */
   --fade: 1;
+  --fade-main-heading: 0;
+  --fade-btn-get-inspired: 0;
 } /* end of: :root */
 
 *,
@@ -315,6 +317,11 @@ h1 {
   letter-spacing: 0.5rem;
 
   opacity: var(--fade-in);
+}
+
+.main__heading#mainHeading[data-transparent='true'] {
+  opacity: var(--fade-main-heading);
+  line-height: var(--font-lineheight-1);
 }
 
 #app {
@@ -395,6 +402,18 @@ button:active {
 button::after,
 button::before {
   border-radius: 3px;
+}
+button.nav__btn-get-inspired#btnGetInspired[data-transparent='true'] {
+  opacity: var(--fade-btn-get-inspired);
+  position: absolute; // top: -100px;
+  transition: position 0.5s ease-out; // appearance: none;
+}
+
+button.nav__btn-get-inspired#btnGetInspired[data-transparent='false'] {
+  transition: all 2s ease-in;
+  opacity: 1;
+  top: 0;
+  position: relative;
 }
 
 .shrink-border {
@@ -612,7 +631,7 @@ button[data-button-style-none] {
   color: var(--fg2);
   border: none;
   padding: 0;
-  font-size: var(--font-size-300);
+  font-size: var(--font-size-400);
 }
 /* .buttons-controls {
   display: none;
