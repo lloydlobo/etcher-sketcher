@@ -1,6 +1,6 @@
 /* eslint-disable no-console */ /* eslint-disable no-param-reassign */ // cspell:ignore btns eslintno
-import './style.css';
-import { sleep } from './app'; // import { createButtonInspired } from './createButtonInspired';
+import "./scss/style.scss";
+import { sleep } from "./app"; // import { createButtonInspired } from './createButtonInspired';
 
 /// /////////////////////////////////////////////////////////////////////////////
 ///
@@ -27,8 +27,8 @@ import { sleep } from './app'; // import { createButtonInspired } from './create
 ///
 /// /////////////////////////////////////////////////////////////////////////////////
 
-const ROOT = document.querySelector(':root') as HTMLElement;
-const app = document.querySelector<HTMLDivElement>('#app')!;
+const ROOT = document.querySelector(":root") as HTMLElement;
+const app = document.querySelector<HTMLDivElement>("#app")!;
 const heading1 = `<h1 class="heading">etcher sketcher</h1>`;
 app.innerHTML = ` ${heading1} `;
 
@@ -39,19 +39,19 @@ const MODE_YIN = `yin`;
 const MODE_YANG = `yang`;
 const MODE_ZEN = `zen`;
 
-const RESET_BACKGROUND_COLOR = '#EBDBB2';
+const RESET_BACKGROUND_COLOR = "#EBDBB2";
 
 // prettier-ignore-start
 const MODE_SELECT_STYLE = {
-  [MODE_CLASSIC]: { backgroundColor: '#fbf1c7', opacity: '1' },
-  [MODE_INSPIRED]: { backgroundColor: '#fbf1c7', opacity: '1' },
-  [MODE_YIN]: { backgroundColor: '#fbf1c7', opacity: '1' },
-  [MODE_YANG]: { backgroundColor: '#fbf1c7', opacity: '1' },
-  [MODE_ZEN]: { backgroundColor: '#fbf1c7', opacity: '1' },
+  [MODE_CLASSIC]: { backgroundColor: "#fbf1c7", opacity: "1" },
+  [MODE_INSPIRED]: { backgroundColor: "#fbf1c7", opacity: "1" },
+  [MODE_YIN]: { backgroundColor: "#fbf1c7", opacity: "1" },
+  [MODE_YANG]: { backgroundColor: "#fbf1c7", opacity: "1" },
+  [MODE_ZEN]: { backgroundColor: "#fbf1c7", opacity: "1" },
 }; // prettier-ignore-end
 
-let modeCurrent = '';
-modeCurrent = '';
+let modeCurrent = "";
+modeCurrent = "";
 
 /// ////////////////////////////////////////////////////////////////////////////
 ///
@@ -61,17 +61,17 @@ modeCurrent = '';
 
 // const btnGetInspired = createButtonInspired(); // bonus feature todo - add a button to get inspired
 
-const controls = document.querySelector('.controls') as HTMLDivElement;
-const btnsSize = document.querySelectorAll<HTMLButtonElement>('#btnsSize');
-const btnsMode = document.querySelectorAll<HTMLButtonElement>('#btnsMode');
+const controls = document.querySelector(".controls") as HTMLDivElement;
+const btnsSize = document.querySelectorAll<HTMLButtonElement>("#btnsSize");
+const btnsMode = document.querySelectorAll<HTMLButtonElement>("#btnsMode");
 
 const allBtnsSizeAndMode = document.querySelectorAll<HTMLButtonElement>(
-  '#btnsSize, #btnsMode #btnErase',
+  "#btnsSize, #btnsMode #btnErase"
 );
 console.log(allBtnsSizeAndMode);
 
 // const BTNS_CONTROLS = [btnsSize, btnsMode];
-export const styleAddClassBtn = ['shrink-border', 'material-bubble'];
+export const styleAddClassBtn = ["shrink-border", "material-bubble"];
 
 /// ////////////////////////////////////////////////////////////////////////////
 ///
@@ -83,7 +83,7 @@ async function fade(
   element: HTMLElement,
   speed = 0.1,
   opacity = 0,
-  frames = 10,
+  frames = 10
 ) {
   // Function declared in a loop contains unsafe references to variable(s) 'opacity'
   for (let i = 0; i < frames; i += 1) {
@@ -135,23 +135,23 @@ function gridHashMap(index: number, gridChild: HTMLDivElement) {
 
 function createContainerGridBorder() {
   const containerBorder = `calc(9 / 16 * 3vw) solid var(--grid-border-color)`;
-  ROOT.style.setProperty('--container-border', containerBorder);
+  ROOT.style.setProperty("--container-border", containerBorder);
 }
 
-function generateGrid(size = 32 * 44, cssClass = 'grid-medium-default') {
-  const containerGame = document.getElementById('containerGrid') as HTMLElement;
-  containerGame.innerHTML = '';
+function generateGrid(size = 32 * 44, cssClass = "grid-medium-default") {
+  const containerGame = document.getElementById("containerGrid") as HTMLElement;
+  containerGame.innerHTML = "";
   containerGame.classList.remove(
-    'grid-small',
-    'grid-medium-default',
-    'grid-big',
+    "grid-small",
+    "grid-medium-default",
+    "grid-big"
   );
   createContainerGridBorder();
   containerGame.classList.add(cssClass);
   // smooth animation that fades in as grid is generated with css on event btnStartSketch
   fade(containerGame, 0.1, 0, 10);
   for (let i = 0; i < size; i += 1) {
-    const div = document.createElement('div') as HTMLDivElement;
+    const div = document.createElement("div") as HTMLDivElement;
     containerGame.appendChild(div);
     gridHashMap(i, div);
   }
@@ -191,7 +191,7 @@ function erase() {
   const containerGridChildren = document.querySelectorAll<HTMLDivElement>( '#containerGrid > div',); // prettier-ignore
   containerGridChildren.forEach((div) => {
     div.style.backgroundColor = RESET_BACKGROUND_COLOR;
-    div.style.opacity = '1';
+    div.style.opacity = "1";
   });
 }
 
@@ -203,7 +203,7 @@ function erase() {
 
 function startSketching(mode: string) {
   const gridChildren = document.querySelectorAll<HTMLDivElement>(
-    '#containerGrid > div',
+    "#containerGrid > div"
   );
   // Style the grid with the selected mode
   gridChildren.forEach((gridChild): void => {
@@ -214,31 +214,31 @@ function startSketching(mode: string) {
     /// region:      --- STYLE GRID ---
     ///
     /// /////////////////////////////////////////////////////////////////////////////
-    gridChild.addEventListener('mouseover', (event): void => {
+    gridChild.addEventListener("mouseover", (event): void => {
       if (
         mode === MODE_CLASSIC ||
         modeCurrent === MODE_CLASSIC ||
-        modeCurrent === ''
+        modeCurrent === ""
       ) {
         (event.target as HTMLDivElement).style.backgroundColor =
           MODE_SELECT_STYLE[MODE_CLASSIC].backgroundColor;
 
-        (event.target as HTMLDivElement).style.opacity = '1';
+        (event.target as HTMLDivElement).style.opacity = "1";
       } else if (mode === MODE_INSPIRED) {
         (event.target as HTMLDivElement).style.backgroundColor =
           MODE_SELECT_STYLE[MODE_INSPIRED].backgroundColor;
       } else if (mode === MODE_ZEN || modeCurrent === MODE_ZEN) {
         const zenPallette = [
-          '#EF476F',
-          '#FFD166',
-          '#06D6A0',
-          '#118AB2',
-          '#073B4C',
+          "#EF476F",
+          "#FFD166",
+          "#06D6A0",
+          "#118AB2",
+          "#073B4C",
         ];
         const randomColor =
           zenPallette[Math.floor(Math.random() * zenPallette.length)];
         (event.target as HTMLDivElement).style.backgroundColor = randomColor;
-        (event.target as HTMLDivElement).style.opacity = '1';
+        (event.target as HTMLDivElement).style.opacity = "1";
       }
     }); // end of mouseover event listener
 
@@ -251,11 +251,11 @@ function startSketching(mode: string) {
     // erase the color of clicked div to default
     (gridChild as HTMLDivElement).oncontextmenu = () => {
       (gridChild as HTMLDivElement).style.backgroundColor = RESET_BACKGROUND_COLOR; // prettier-ignore
-      (gridChild as HTMLDivElement).style.opacity = '1';
+      (gridChild as HTMLDivElement).style.opacity = "1";
     };
 
     // disables the context-menu event while right-clicking on the div
-    gridChild.addEventListener('contextmenu', (e) => e.preventDefault()); // e.stopPropagation(); // e.stopImmediatePropagation(); // https://developer.mozilla.org/en-US/docs/Web/API/Element/contextmenu_event
+    gridChild.addEventListener("contextmenu", (e) => e.preventDefault()); // e.stopPropagation(); // e.stopImmediatePropagation(); // https://developer.mozilla.org/en-US/docs/Web/API/Element/contextmenu_event
   }); // gridChildren.forEach
 } // end of function startSketching(mode: string)
 
@@ -266,16 +266,16 @@ function startSketching(mode: string) {
 /// ////////////////////////////////////////////////////////////////////////////
 
 function chooseButton(button: HTMLButtonElement) {
-  if (button.classList.contains('mode')) {
+  if (button.classList.contains("mode")) {
     btnsMode.forEach((btnMode) => {
-      btnMode.classList.remove('btn-active');
+      btnMode.classList.remove("btn-active");
     });
   } else {
     btnsSize.forEach((btnSize) => {
-      btnSize.classList.remove('btn-active');
+      btnSize.classList.remove("btn-active");
     });
   }
-  button.classList.add('btn-active');
+  button.classList.add("btn-active");
 }
 
 function chooseSize() {
@@ -283,23 +283,23 @@ function chooseSize() {
   const MEDIUM = 32 * 44;
   const BIG = 64 * 88;
 
-  btnsSize[1].classList.add('btn-active');
+  btnsSize[1].classList.add("btn-active");
 
   btnsSize.forEach((btnSize) => {
-    btnSize.addEventListener('click', () => {
-      if (btnSize.classList.contains('small')) {
+    btnSize.addEventListener("click", () => {
+      if (btnSize.classList.contains("small")) {
         erase();
-        generateGrid(SMALL, 'grid-small');
+        generateGrid(SMALL, "grid-small");
         startSketching(MODE_CLASSIC);
         chooseButton(btnSize);
-      } else if (btnSize.classList.contains('medium')) {
+      } else if (btnSize.classList.contains("medium")) {
         erase();
-        generateGrid(MEDIUM, 'grid-medium-default');
+        generateGrid(MEDIUM, "grid-medium-default");
         startSketching(MODE_CLASSIC);
         chooseButton(btnSize);
-      } else if (btnSize.classList.contains('big')) {
+      } else if (btnSize.classList.contains("big")) {
         erase();
-        generateGrid(BIG, 'grid-big');
+        generateGrid(BIG, "grid-big");
         startSketching(MODE_CLASSIC);
         chooseButton(btnSize);
       }
@@ -308,36 +308,36 @@ function chooseSize() {
 }
 
 function chooseMode() {
-  btnsMode[0].classList.add('btn-active');
+  btnsMode[0].classList.add("btn-active");
   btnsMode.forEach((btnMode) => {
-    btnMode.addEventListener('click', () => {
-      if (btnMode.classList.contains('classic')) {
+    btnMode.addEventListener("click", () => {
+      if (btnMode.classList.contains("classic")) {
         // erase();
         // generateGrid(32 * 44, 'grid-medium-default');
         startSketching(MODE_CLASSIC);
         chooseButton(btnMode);
         modeCurrent = MODE_CLASSIC;
-      } else if (btnMode.classList.contains('inspired')) {
+      } else if (btnMode.classList.contains("inspired")) {
         // erase();
         // generateGrid(32 * 44, 'grid-medium-default');
         startSketching(MODE_INSPIRED);
         chooseButton(btnMode);
         modeCurrent = MODE_INSPIRED;
-      } else if (btnMode.classList.contains('zen')) {
+      } else if (btnMode.classList.contains("zen")) {
         // erase();
         // generateGrid(32 * 44, 'grid-medium-default');
         startSketching(MODE_ZEN);
         chooseButton(btnMode);
         modeCurrent = MODE_ZEN;
-      } else if (btnMode.classList.contains('reset')) {
+      } else if (btnMode.classList.contains("reset")) {
         erase();
-        generateGrid(32 * 44, 'grid-medium-default');
+        generateGrid(32 * 44, "grid-medium-default");
         startSketching(MODE_CLASSIC);
         chooseButton(btnMode);
         modeCurrent = MODE_CLASSIC;
       } else {
         try {
-          throw new Error('Unknown mode');
+          throw new Error("Unknown mode");
         } catch (error) {
           console.error(error);
         }
@@ -353,17 +353,17 @@ function chooseMode() {
 /// ////////////////////////////////////////////////////////////////////////////
 
 function createButtonSketching() {
-  const btn = document.createElement('button') as HTMLButtonElement;
-  btn.innerHTML = 'start sketching';
+  const btn = document.createElement("button") as HTMLButtonElement;
+  btn.innerHTML = "start sketching";
   btn.classList.add(...styleAddClassBtn);
-  btn.id = 'btnStartSketching';
+  btn.id = "btnStartSketching";
   app.appendChild(btn);
   return btn;
 }
 
 function eraseEvent() {
-  const btnErase = document.getElementById('btnErase') as HTMLButtonElement;
-  btnErase.addEventListener('click', erase);
+  const btnErase = document.getElementById("btnErase") as HTMLButtonElement;
+  btnErase.addEventListener("click", erase);
 }
 
 /// ////////////////////////////////////////////////////////////////////////////
@@ -374,7 +374,7 @@ function eraseEvent() {
 
 function colorDivHashMap(color: string) {
   const gridChildren = document.querySelectorAll<HTMLDivElement>(
-    '#containerGrid > div',
+    "#containerGrid > div"
   );
   map.forEach((index) => {
     console.log({ index });
@@ -394,7 +394,7 @@ function colorDivHashMap(color: string) {
 }
 
 function displayAllControlButtons() {
-  controls.dataset.hidden = 'false';
+  controls.dataset.hidden = "false";
 }
 
 /// ////////////////////////////////////////////////////////////////////////////

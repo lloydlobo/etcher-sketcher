@@ -1,13 +1,12 @@
+// @use 'base';
+// @use 'utilities';
+// @use 'components';
+// @use 'layouts';
+// @use 'global';
+// @use 'abstracts';
+
 /* cspell:ignore btns letterspacing lineheight Avenir */
-
-#app {
-  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  margin-top: 60px;
-}
-
+// https://github.com/thecodercoder/fem-dklt-toggle
 :root {
   /******************************************************************************
   ***
@@ -40,10 +39,9 @@
   --font-size-800: 2rem;
   --font-size-900: 2.25rem;
 
-
   /* font size */
-  --font-size-00: .5rem;
-  --font-size-0: .75rem;
+  --font-size-00: 0.5rem;
+  --font-size-0: 0.75rem;
   --font-size-1: 1rem;
   --font-size-2: 1.1rem;
   --font-size-3: 1.25rem;
@@ -81,22 +79,20 @@
   --font-weight-6: 600;
   --font-weight-7: 700;
   --font-weight-8: 800;
-  --font-weight-9: 900
+  --font-weight-9: 900;
 
-    /******************************************************************************
+  /******************************************************************************
   ***
   *** SIZES
   ***
-  ******************************************************************************/
+  ***************************************************************************** */
 
-    /* 
+  /* 
     1. Fluid, 
     2. relative, 
     3. reading-content 
-    */
-
-    /* SIZES: Fluid SIzes */
-    --size-fluid-1: clamp(.5rem, 1vw, 1rem);
+  */
+  --size-fluid-1: clamp(0.5rem, 1vw, 1rem);
   --size-fluid-2: clamp(1rem, 2vw, 1.5rem);
   --size-fluid-3: clamp(1.5rem, 3vw, 2rem);
   --size-fluid-4: clamp(2rem, 4vw, 3rem);
@@ -108,10 +104,10 @@
   --size-fluid-10: clamp(20rem, 40vw, 30rem);
 
   /* SIZES: Relative Size */
-  --size-000: -.5rem;
-  --size-00: -.25rem;
-  --size-1: .25rem;
-  --size-2: .5rem;
+  --size-000: -0.5rem;
+  --size-00: -0.25rem;
+  --size-1: 0.25rem;
+  --size-2: 0.5rem;
   --size-3: 1rem;
   --size-4: 1.25rem;
   --size-5: 1.5rem;
@@ -154,7 +150,7 @@
   ******************************************************************************/
 
   /* color pallette by https://github.com/YV31/gruvbox-css/blob/master/src/gruvbox-dark.css */
-  
+
   /* background */
   --bg_h: #1d2021; /* hard color */
   --bg: #282828;
@@ -191,7 +187,6 @@
   --gray-dim: #a89984;
   --orange-dim: #d65d0e;
 
-
   /******************************************************************************
   ***
   *** DOM MANIPULATION WITH JAVASCRIPT
@@ -205,7 +200,7 @@
   4. Grid border color, color-dim, border-radius
   4. Container Border -- JavaScript adds a thick border when container is created
   */
-  
+
   /* gap to add in flex buttons with javascript on click */
   --gap-btn: 0rem;
 
@@ -225,13 +220,13 @@
   --grid-border-color: var(--bg);
   --grid-border-color-dim: var(--bg-dim);
   --grid-border-radius: var(--font-size-400);
-  
+
   /* Thick border on etch sketch containerGrid to emulate etch-a-sketch */
   --container-border: 0;
 
   /* opacity to fade in/out elements on reset */
   --fade: 1;
-}
+} /* end of: :root */
 
 *,
 *::before,
@@ -251,7 +246,7 @@ body {
 
   line-height: 1.5;
   font-size: clamp(1.25rem, 2vw, 2.5rem);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 
   color: var(--fg);
   background-color: var(--bg_h);
@@ -260,12 +255,12 @@ body {
 
   display: grid;
   grid-template-areas:
-    'header'
-    'main'
-    'footer';
+    "header"
+    "main"
+    "footer";
 }
 
-  /******************************************************************************
+/******************************************************************************
   ***
   *** TYPOGRAPHY
   ***
@@ -302,6 +297,14 @@ h1 {
   letter-spacing: 0.5rem;
 
   opacity: var(--fade-in);
+}
+
+#app {
+  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  margin-top: 60px;
 }
 
 /* region:      --- features add-on */
@@ -388,7 +391,7 @@ button::before {
 }
 
 .shrink-border::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -403,7 +406,7 @@ button::before {
 }
 
 .shrink-border::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -435,7 +438,7 @@ button::before {
 }
 
 .material-bubble::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -450,7 +453,7 @@ button::before {
 }
 
 .material-bubble:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -510,7 +513,7 @@ button::before {
   /* cursor: crosshair; */
 }
 
-#containerGrid>div {
+#containerGrid > div {
   background-color: #ebdbb2;
 }
 
@@ -518,7 +521,7 @@ button::before {
   grid-template-columns: repeat(22, auto);
 }
 
-.grid-small>div {
+.grid-small > div {
   width: var(--grid-density-small-width);
   height: var(--grid-density-small-height);
 }
@@ -527,7 +530,7 @@ button::before {
   grid-template-columns: repeat(44, auto);
 }
 
-.grid-medium-default>div {
+.grid-medium-default > div {
   width: var(--grid-density-medium-width);
   height: var(--grid-density-medium-width);
 }
@@ -536,7 +539,7 @@ button::before {
   grid-template-columns: repeat(88, auto);
 }
 
-.grid-big>div {
+.grid-big > div {
   width: var(--grid-density-large-width);
   height: var(--grid-density-large-height);
 }
@@ -549,11 +552,11 @@ button::before {
 */
 /* ************************************************************************* */
 
-.controls[data-hidden='true'] {
+.controls[data-hidden="true"] {
   display: none;
 }
 
-.controls[data-hidden='false'] {
+.controls[data-hidden="false"] {
   justify-content: center;
   align-items: center;
   display: flex;
@@ -569,7 +572,7 @@ button::before {
 }
 
 button.buttons-controls,
-.buttons-controls>button {
+.buttons-controls > button {
   background-color: var(--bg_h);
   padding-block: var(--font-size-200);
   padding-inline: var(--font-size-100);
