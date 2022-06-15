@@ -426,11 +426,14 @@ button::before {
 */
 /* ************************************************************************* */
 
-.controls {
-  display: flex;
+.controls[data-hidden='true'] {
+  display: none;
+}
+
+.controls[data-hidden='false'] {
   justify-content: center;
   align-items: center;
-  /* gap: 75px; */
+  display: flex;
 }
 
 .buttons-controls {
@@ -452,3 +455,7 @@ button.buttons-controls,
 
   text-transform: lowercase;
 }
+
+/* .buttons-controls {
+  display: none;
+} */

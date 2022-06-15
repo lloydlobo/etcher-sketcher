@@ -61,10 +61,16 @@ modeCurrent = '';
 
 // const btnGetInspired = createButtonInspired(); // bonus feature todo - add a button to get inspired
 
+const controls = document.querySelector('.controls') as HTMLDivElement;
 const btnsSize = document.querySelectorAll<HTMLButtonElement>('#btnsSize');
 const btnsMode = document.querySelectorAll<HTMLButtonElement>('#btnsMode');
-console.dir({ btnsSize, btnsMode });
 
+const allBtnsSizeAndMode = document.querySelectorAll<HTMLButtonElement>(
+  '#btnsSize, #btnsMode #btnErase',
+);
+console.log(allBtnsSizeAndMode);
+
+// const BTNS_CONTROLS = [btnsSize, btnsMode];
 export const styleAddClassBtn = ['shrink-border', 'material-bubble'];
 
 /// ////////////////////////////////////////////////////////////////////////////
@@ -128,8 +134,6 @@ function gridHashMap(index: number, gridChild: HTMLDivElement) {
 /// ////////////////////////////////////////////////////////////////////////////
 
 function createContainerGridBorder() {
-  console.dir({ ROOT });
-  // const containerBorder = `2rem solid #fff`;
   const containerBorder = `calc(9 / 16 * 3vw) solid var(--grid-border-color)`;
   ROOT.style.setProperty('--container-border', containerBorder);
 }
@@ -142,7 +146,6 @@ function generateGrid(size = 32 * 44, cssClass = 'grid-medium-default') {
     'grid-medium-default',
     'grid-big',
   );
-
   createContainerGridBorder();
   containerGame.classList.add(cssClass);
   // smooth animation that fades in as grid is generated with css on event btnStartSketch
@@ -376,7 +379,7 @@ function colorDivHashMap(color: string) {
   map.forEach((index) => {
     console.log({ index });
     const arr = new Array(index);
-    // pick out divs with the index value which matches the sequence in an array
+    // pick out div with the index value which matches the sequence in an array
     if (index === hashMap.keys().next().value) {
       gridChildren.forEach((gridChild) => {
         arr.push(gridChild);
@@ -390,6 +393,10 @@ function colorDivHashMap(color: string) {
   });
 }
 
+function displayAllControlButtons() {
+  controls.dataset.hidden = 'false';
+}
+
 /// ////////////////////////////////////////////////////////////////////////////
 ///
 // region:      --- START SKETCH GAME LIFE CYCLE ---
@@ -398,6 +405,7 @@ function colorDivHashMap(color: string) {
 function startSketchGame() {
   generateGrid();
   startSketching(`classic`);
+  displayAllControlButtons();
   chooseSize();
   chooseMode();
   eraseEvent();
