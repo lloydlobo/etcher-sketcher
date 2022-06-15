@@ -30,6 +30,7 @@
       <div
         id="containerGrid"
         class="main__container-grid grid-medium-default"
+        data-ruler="false"
       ></div>
 
       <div data-hidden="true" id="#controls" class="main__controls">
@@ -54,12 +55,22 @@
             Large
           </button>
         </div>
-        <button
-          id="btnErase"
-          class="main__controls__btn-erase erase buttons-controls"
-        >
-          Shake
-        </button>
+        <div class="main__controls__btns-utilites buttons-controls">
+          <!-- erase -->
+          <button
+            id="btnErase"
+            class="main__controls__btn-erase erase buttons-controls"
+          >
+            Shake
+          </button>
+          <!-- show grid -->
+          <button
+            id="btnShowGridLayout"
+            class="main__controls__btn-show-grid-layout show-grid-layout buttons-controls"
+          >
+            Grid
+          </button>
+        </div>
         <div class="main__controls__btns-mode mode-controls buttons-controls">
           <!-- <p>Mode:</p> -->
           <button

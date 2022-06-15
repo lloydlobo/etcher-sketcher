@@ -14,13 +14,7 @@
   ***
   ******************************************************************************/
 
-  /* 
-  1. font-size-fluid, 
-  2. font-size, 
-  3. font-letterspacing, 
-  4. font-lineheight, 
-  5. font-weight 
-  */
+  /* 1. font-size-fluid, 2. font-size, 3. font-letterspacing, 4. font-lineheight, 5. font-weight */
 
   /* font size fluid */
   --font-size-fluid-0: clamp(0.75rem, 1.5vw, 1rem);
@@ -216,14 +210,38 @@
   --grid-density-large-width: clamp(0.25rem, 1vw + 1rem, 0.5625rem);
   --grid-density-large-height: clamp(0.25rem, 1vw + 1rem, 0.5625rem);
 
+  --font-size-fluid-0: clamp(0.75rem, 1.5vw, 1rem);
+  --font-size-fluid-1: clamp(1rem, 2vw, 1.5rem);
+  --font-size-fluid-2: clamp(1.5rem, 3vw, 2.5rem);
+  --font-size-fluid-3: clamp(2rem, 4vw, 3.5rem);
+
+  // --size-fluid-1: clamp(0.5rem, 1vw, 1rem);
+  // --size-fluid-2: clamp(1rem, 2vw, 1.5rem);
+  // --size-fluid-3: clamp(1.5rem, 3vw, 2rem);
+  // --size-fluid-4: clamp(2rem, 4vw, 3rem);
+  // --size-fluid-5: clamp(4rem, 5vw, 5rem);
+  // --size-fluid-6: clamp(5rem, 7vw, 7.5rem);
+  // --size-fluid-7: clamp(7.5rem, 10vw, 10rem);
+  // --size-fluid-8: clamp(10rem, 20vw, 15rem);
+  // --size-fluid-9: clamp(15rem, 30vw, 20rem);
+  // --size-fluid-10: clamp(20rem, 40vw, 30rem);
+
   /* custom color control with javascript */
   --grid-border-color: var(--bg);
   --grid-border-color-dim: var(--bg-dim);
   --grid-border-radius: var(--font-size-400);
 
+  --grid-child-border-color: var(--fg2);
+  --grid-child-border-color-dim: var(--fg2-dim);
+  --grid-child-border-radius: var(--font-size-400);
+  --grid-child-border-width: 0.0625rem;
+  --grid-child-border-style: solid;
+
+  // --grid-border-color: var(--bg-dim);
   /* Thick border on etch sketch containerGrid to emulate etch-a-sketch */
   --container-border: 0;
-
+  // background color of containerGrid to blend with border (it's a very thin line)
+  --container-grid-bg: var(--bg_s);
   /* opacity to fade in/out elements on reset */
   --fade: 1;
 } /* end of: :root */
@@ -500,17 +518,23 @@ button::before {
 /* Game container */
 /* small(16x22) medium.default(32x44) big(64x88) */
 
-#containerGrid {
+.main__container-grid#containerGrid {
   display: inline-grid;
-
   border: var(--container-border);
   /* 16:9 ratio -> ff5e5b  */
-  /* border: calc(9 / 16 * 3vw) solid var(--grid-border-color);  */
   border-radius: var(--grid-border-radius);
-  /* border-width: 6px 100px 0; */
-  grid-gap: 1px;
-  background-color: #aaaaaa;
+  // border-width: 6px 100px 0;
+  // grid-gap: 1px;
+  background-color: var(
+    --container-grid-bg
+  ); // make it a little bit less alpha or lighter(greyish) than the border edges o it blends
   /* cursor: crosshair; */
+}
+
+.main__container-grid#containerGrid[data-ruler='true'] > * {
+  border-style: var(--grid-child-border-style);
+  border-width: var(--grid-child-border-width);
+  border-color: var(--grid-child-border-color);
 }
 
 #containerGrid > div {

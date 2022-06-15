@@ -397,6 +397,25 @@ function displayAllControlButtons() {
   controls.dataset.hidden = 'false';
 }
 
+function displayGridLayout() {
+  const containerGrid = document.getElementById(
+    'containerGrid',
+  ) as HTMLDivElement;
+
+  if (containerGrid.dataset.ruler === 'false') {
+    containerGrid.dataset.ruler = 'true';
+  } else if (containerGrid.dataset.ruler === 'true') {
+    containerGrid.dataset.ruler = 'false';
+  }
+}
+// Result on HTML: <div id="user" data-id="1234567890" data-user="john" data-some-data-attr="data">John Doe</div>
+// Result on JS: 'someDataAttr' in el.dataset === true
+
+const btnShowGridLayout = document.getElementById(
+  'btnShowGridLayout',
+) as HTMLButtonElement;
+btnShowGridLayout.addEventListener('click', displayGridLayout);
+
 /// ////////////////////////////////////////////////////////////////////////////
 ///
 // region:      --- START SKETCH GAME LIFE CYCLE ---
