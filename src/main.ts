@@ -1,6 +1,14 @@
 /* eslint-disable no-console */ /* eslint-disable no-param-reassign */ // cspell:ignore btns eslintno
 import './scss/style.scss';
-import { sleep } from './app'; // import { createButtonInspired } from './createButtonInspired';
+import {
+  sleep,
+  ThemeToggle,
+  reflectPreference,
+  theme,
+  setPreference,
+} from './app'; // import { createButtonInspired } from './createButtonInspired';
+
+console.log(ThemeToggle);
 
 /// /////////////////////////////////////////////////////////////////////////////
 ///
@@ -28,11 +36,11 @@ import { sleep } from './app'; // import { createButtonInspired } from './create
 /// /////////////////////////////////////////////////////////////////////////////////
 
 const ROOT = document.querySelector(':root') as HTMLElement;
-const app = document.querySelector<HTMLDivElement>('#app')!;
-const heading1 = `<h1 class="heading">etcher sketcher</h1>`;
-app.innerHTML = ` ${heading1} `;
-
+// const app = document.querySelector<HTMLDivElement>('#app')!;
+// const heading1 = `<h1 class="heading">etcher sketcher</h1>`;
+// app.innerHTML = ` ${heading1} `;
 // const htmlBtnGetInspired = `<button id="btnGetInspired">get inspired</button>`; // ${htmlBtnGetInspired}
+
 const MODE_CLASSIC = `classic`;
 const MODE_MODERN = `modern`;
 const MODE_YIN = `yin`;
@@ -87,7 +95,7 @@ const allBtnsSizeAndMode = document.querySelectorAll<HTMLButtonElement>(
 console.log(allBtnsSizeAndMode);
 
 // const BTNS_CONTROLS = [btnsSize, btnsMode];
-export const styleAddClassBtn = ['shrink-border', 'material-bubble'];
+// export const styleAddClassBtn = ['shrink-border', 'material-bubble'];
 
 /// ////////////////////////////////////////////////////////////////////////////
 ///
@@ -377,14 +385,7 @@ function chooseMode() {
 ///
 /// ////////////////////////////////////////////////////////////////////////////
 
-function createButtonSketching() {
-  const btn = document.createElement('button') as HTMLButtonElement;
-  btn.innerHTML = 'start sketching';
-  btn.classList.add(...styleAddClassBtn);
-  btn.id = 'btnStartSketching';
-  app.appendChild(btn);
-  return btn;
-}
+// function createButtonSketching() { const btn = document.createElement('button') as HTMLButtonElement; btn.innerHTML = 'start sketching'; btn.classList.add(...styleAddClassBtn); btn.id = 'btnStartSketching'; app.appendChild(btn); return btn; }
 
 function eraseEvent() {
   const btnErase = document.getElementById('btnErase') as HTMLButtonElement;
@@ -441,6 +442,20 @@ const btnShowGridLayout = document.getElementById(
 ) as HTMLButtonElement;
 btnShowGridLayout.addEventListener('click', displayGridLayout);
 
+function toggleThemeOnWindowLoad() {
+  window.onload = (): void => {
+    reflectPreference();
+    const btnThemeToggle = document.querySelector(
+      '#theme-toggle',
+    ) as HTMLElement;
+    btnThemeToggle.addEventListener('click', (event) => {
+      console.log('clicked', event);
+      theme.value = theme.value === 'light' ? 'dark' : 'light';
+      setPreference();
+    });
+  };
+}
+
 /// ////////////////////////////////////////////////////////////////////////////
 ///
 // region:      --- START SKETCH GAME LIFE CYCLE ---
@@ -462,28 +477,43 @@ function startSketchGame() {
 /// ////////////////////////////////////////////////////////////////////////////
 
 function main() {
-  createButtonSketching();
+  // createButtonSketching();
   const btnStartSketching = document.getElementById( `btnStartSketching`,) as HTMLButtonElement; // prettier-ignore
   // prettier-ignore
   btnStartSketching.addEventListener( 'mousedown', () => {
-    btnStartSketching.remove();
-    sleep(100).then(() => startSketchGame());
-    colorDivHashMap(MODE_SELECT_STYLE[MODE_CLASSIC].backgroundColor);
+      btnStartSketching.remove();
+      sleep(100).then(() => startSketchGame());
+      colorDivHashMap(MODE_SELECT_STYLE[MODE_CLASSIC].backgroundColor);
+    sleep(10000).then(() => { reflectPreference(); // helps to avoid flashing the page when the user changes the theme or onload
+      toggleThemeOnWindowLoad()
+    });
     },
     { once: true },
-  );
+    )
 }
-
-/// ! FOR DEBUGGING DEVELOPMENT ONLY !  // runOnce(main);
-// startSketchGame(); // !!!! remove after debugging and serving for production
-/// ! FOR DEBUGGING DEVELOPMENT ONLY !  // runOnce(main);
 
 main();
 
-/// ///////////////////////////////////////////////////////////////////////////
+/// ////////////////////////////////////////////////////////////////////////////
 ///
 /// region:      --- END ---
 ///
-/// ///////////////////////////////////////////////////////////////////////////
+/// ////////////////////////////////////////////////////////////////////////////
 
-// cspell:disable-next-line // immutable data structures --> mori, immutable.js for PERSISTANT DATA STRUCTURES ... other FP lib are underscore Lodash Ramda.... --> Context: JSUnconf Anana Vakil Learn Functional Programming WIt Javascript // https://crates.io/crates/persistence Rust lib does something similar?
+// console.dir(ROOT.style.);
+// const getROOTStyleVariables = () => {
+//   // const style = window.getComputedStyle(ROOT);
+//   const { style } = ROOT;
+//   // const style = ROOT.getAttributeNames();
+
+//   const styleVariables = [];
+//   for (let i = 0; i < style.length; i += 1) {
+//     const key = style[i];
+//     const value = style.getPropertyValue(key);
+//     styleVariables[i] = value;
+//   }
+//   return styleVariables;
+// };
+
+// const rootVariables = getROOTStyleVariables();
+// console.dir(rootVariables);

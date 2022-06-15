@@ -607,6 +607,13 @@ button.buttons-controls,
   text-transform: lowercase;
 }
 
+button[data-button-style-none] {
+  background-color: transparent;
+  color: var(--fg2);
+  border: none;
+  padding: 0;
+  font-size: var(--font-size-300);
+}
 /* .buttons-controls {
   display: none;
 } */
