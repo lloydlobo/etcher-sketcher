@@ -34,7 +34,7 @@ app.innerHTML = ` ${heading1} `;
 
 // const htmlBtnGetInspired = `<button id="btnGetInspired">get inspired</button>`; // ${htmlBtnGetInspired}
 const MODE_CLASSIC = `classic`;
-const MODE_INSPIRED = `inspired`;
+const MODE_MODERN = `modern`;
 const MODE_YIN = `yin`;
 const MODE_YANG = `yang`;
 const MODE_ZEN = `zen`;
@@ -44,7 +44,23 @@ const RESET_BACKGROUND_COLOR = '#EBDBB2';
 // prettier-ignore-start
 const MODE_SELECT_STYLE = {
   [MODE_CLASSIC]: { backgroundColor: '#fbf1c7', opacity: '1' },
-  [MODE_INSPIRED]: { backgroundColor: '#fbf1c7', opacity: '1' },
+  [MODE_MODERN]: {
+    colorPallette: [
+      '#fbf1c7',
+      '#f7f1c7',
+      '#f3f1c7',
+      '#f0f1c7',
+      '#ecf1c7',
+      '#e8f1c7',
+      '#e4f1c7',
+      '#e0f1c7',
+      '#dcf1c7',
+      '#d8f1c7',
+      '#d4f1c7',
+      '#d0f1c7',
+    ],
+    opacity: '1',
+  },
   [MODE_YIN]: { backgroundColor: '#fbf1c7', opacity: '1' },
   [MODE_YANG]: { backgroundColor: '#fbf1c7', opacity: '1' },
   [MODE_ZEN]: { backgroundColor: '#fbf1c7', opacity: '1' },
@@ -93,6 +109,10 @@ async function fade(
       opacity += speed;
     });
   }
+}
+
+function getRandomNumber(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 /// ////////////////////////////////////////////////////////////////////////////
@@ -224,9 +244,14 @@ function startSketching(mode: string) {
           MODE_SELECT_STYLE[MODE_CLASSIC].backgroundColor;
 
         (event.target as HTMLDivElement).style.opacity = '1';
-      } else if (mode === MODE_INSPIRED) {
+      } else if (mode === MODE_MODERN) {
         (event.target as HTMLDivElement).style.backgroundColor =
-          MODE_SELECT_STYLE[MODE_INSPIRED].backgroundColor;
+          MODE_SELECT_STYLE[MODE_MODERN].colorPallette[
+            getRandomNumber(
+              0,
+              MODE_SELECT_STYLE[MODE_MODERN].colorPallette.length - 1,
+            )
+          ];
       } else if (mode === MODE_ZEN || modeCurrent === MODE_ZEN) {
         const zenPallette = [
           '#EF476F',
@@ -317,12 +342,12 @@ function chooseMode() {
         startSketching(MODE_CLASSIC);
         chooseButton(btnMode);
         modeCurrent = MODE_CLASSIC;
-      } else if (btnMode.classList.contains('inspired')) {
+      } else if (btnMode.classList.contains('modern')) {
         // erase();
         // generateGrid(32 * 44, 'grid-medium-default');
-        startSketching(MODE_INSPIRED);
+        startSketching(MODE_MODERN);
         chooseButton(btnMode);
-        modeCurrent = MODE_INSPIRED;
+        modeCurrent = MODE_MODERN;
       } else if (btnMode.classList.contains('zen')) {
         // erase();
         // generateGrid(32 * 44, 'grid-medium-default');
