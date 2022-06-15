@@ -1,76 +1,35 @@
+/* cspell:ignore btns letterspacing lineheight Avenir */
+
 #app {
   /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  /* color: #2c3e50; */
   margin-top: 60px;
 }
 
 :root {
-  /* gap to add in flex buttons with javascript on click */
-  --gap-btn: 0rem;
+  /******************************************************************************
+  ***
+  *** FONTS by  https://open-props.style/#typography 
+  ***
+  ******************************************************************************/
 
-  /* display none on buttons or opacity - to avoid layout changes, so focus on hover effect too... but lighthouse may find it odd */
-  --display-btns-mode: inline-block;
-  --display-btns-size: inline-block;
+  /* 
+  1. font-size-fluid, 
+  2. font-size, 
+  3. font-letterspacing, 
+  4. font-lineheight, 
+  5. font-weight 
+  */
 
-  /* dimensions of #containerGrid > div children */
-
-  /* prettier-ignore */
-  --grid-density-small-width: clamp( 1.1875rem, 1vw + 1rem, 2.4375rem); /* max is 39px */
-  /* prettier-ignore */
-  --grid-density-small-height: clamp(1.1875rem, 1vw + 1rem, 2.4375rem);
-  /* prettier-ignore */
-  --grid-density-medium-width: clamp(0.2rem, 0.5vw + 0.7rem, 3.5875rem);
-  /* prettier-ignore */
-  --grid-density-medium-height: clamp(0.2rem, 0.5vw + 0.7rem, 3.5875rem); /* max is 19px prettier-ignore */
-  /* prettier-ignore */
-  --grid-density-large-width: clamp( 0.25rem, 1vw + 1rem, 0.5625rem); /* max is 9px */
-  /* prettier-ignore */
-  --grid-density-large-height: clamp( 0.25rem, 1vw + 1rem, 0.5625rem); /* max is 9px */
-
-  /* opacity to fade in/out elements on reset */
-
-  --fade: 1;
-
-  /* constants */
-
-  /* type-ratios */
-  --type-ratio-minor-second: 1.067;
-  --type-ratio-major-second: 1.125;
-  --type-ratio-minor-third: 1.2;
-  --type-ratio-major-third: 1.25;
-  --type-ratio-perfect-fourth: 1.333;
-  --type-ratio-augmented-fourth: 1.414;
-  --type-ratio-perfect-fifth: 1.5;
-  --type-ratio-golden-ratio: 1.6180339887;
-
-  --type-ratio-current: [-type-ratio-minor-second, -type-ratio-major-second,
-    -type-ratio-minor-third, -type-ratio-major-third, -type-ratio-perfect-fourth,
-    -type-ratio-augmented-fourth, -type-ratio-perfect-fifth,
-    -type-ratio-golden-ratio];
-  --type-scale-index: [0, 1, 2, 3, 4, 5, 6, 7];
-  --type-scale-ratio: [1, 1.067, 1.125, 1.2, 1.25, 1.333, 1.414, 1.5,
-    1.6180339887];
-
-  --size-1: --type-ratio-minor-second;
-  --size-2: --type-ratio-major-second;
-  --size-3: --type-ratio-minor-third;
-  --size-4: --type-ratio-major-third;
-  --size-5: --type-ratio-perfect-fourth;
-  --size-6: --type-ratio-augmented-fourth;
-  --size-7: --type-ratio-perfect-fifth;
-  --size-8: --type-ratio-golden-ratio;
-
-  --size-current: [-size-1, -size-2, -size-3, -size-4, -size-5, -size-6, -size-7,
-    -size-8];
-  --size-scale-index: [0, 1, 2, 3, 4, 5, 6, 7];
-
-  /* type-ratio-font calculation */
+  /* font size fluid */
+  --font-size-fluid-0: clamp(0.75rem, 1.5vw, 1rem);
+  --font-size-fluid-1: clamp(1rem, 2vw, 1.5rem);
+  --font-size-fluid-2: clamp(1.5rem, 3vw, 2.5rem);
+  --font-size-fluid-3: clamp(2rem, 4vw, 3.5rem);
 
   /* font size */
-
   --font-size-100: 0.25rem;
   --font-size-200: 0.5rem;
   --font-size-300: 0.75rem;
@@ -81,21 +40,138 @@
   --font-size-800: 2rem;
   --font-size-900: 2.25rem;
 
+
+  /* font size */
+  --font-size-00: .5rem;
+  --font-size-0: .75rem;
+  --font-size-1: 1rem;
+  --font-size-2: 1.1rem;
+  --font-size-3: 1.25rem;
+  --font-size-4: 1.5rem;
+  --font-size-5: 2rem;
+  --font-size-6: 2.5rem;
+  --font-size-7: 3rem;
+  --font-size-8: 3.5rem;
+
+  /* font-letterspacing */
+  --font-letterspacing-0: -0.05em;
+  --font-letterspacing-1: 0.025em;
+  --font-letterspacing-2: 0.05em;
+  --font-letterspacing-3: 0.075em;
+  --font-letterspacing-4: 0.15em;
+  --font-letterspacing-5: 0.5em;
+  --font-letterspacing-6: 0.75em;
+  --font-letterspacing-7: 1em;
+
+  /* font-lineheight */
+  --font-lineheight-00: 0.95;
+  --font-lineheight-0: 1.1;
+  --font-lineheight-1: 1.25;
+  --font-lineheight-2: 1.375;
+  --font-lineheight-3: 1.5;
+  --font-lineheight-4: 1.75;
+  --font-lineheight-5: 2;
+
+  /* font-weight */
+  --font-weight-1: 100;
+  --font-weight-2: 200;
+  --font-weight-3: 300;
+  --font-weight-4: 400;
+  --font-weight-5: 500;
+  --font-weight-6: 600;
+  --font-weight-7: 700;
+  --font-weight-8: 800;
+  --font-weight-9: 900
+
+    /******************************************************************************
+  ***
+  *** SIZES
+  ***
+  ******************************************************************************/
+
+    /* 
+    1. Fluid, 
+    2. relative, 
+    3. reading-content 
+    */
+
+    /* SIZES: Fluid SIzes */
+    --size-fluid-1: clamp(.5rem, 1vw, 1rem);
+  --size-fluid-2: clamp(1rem, 2vw, 1.5rem);
+  --size-fluid-3: clamp(1.5rem, 3vw, 2rem);
+  --size-fluid-4: clamp(2rem, 4vw, 3rem);
+  --size-fluid-5: clamp(4rem, 5vw, 5rem);
+  --size-fluid-6: clamp(5rem, 7vw, 7.5rem);
+  --size-fluid-7: clamp(7.5rem, 10vw, 10rem);
+  --size-fluid-8: clamp(10rem, 20vw, 15rem);
+  --size-fluid-9: clamp(15rem, 30vw, 20rem);
+  --size-fluid-10: clamp(20rem, 40vw, 30rem);
+
+  /* SIZES: Relative Size */
+  --size-000: -.5rem;
+  --size-00: -.25rem;
+  --size-1: .25rem;
+  --size-2: .5rem;
+  --size-3: 1rem;
+  --size-4: 1.25rem;
+  --size-5: 1.5rem;
+  --size-6: 1.75rem;
+  --size-7: 2rem;
+  --size-8: 3rem;
+  --size-9: 4rem;
+  --size-10: 5rem;
+  --size-11: 7.5rem;
+  --size-12: 10rem;
+  --size-13: 15rem;
+  --size-14: 20rem;
+  --size-15: 30rem;
+
+  /* SIZES: Reading-Content */
+  --size-content-1: 20ch;
+  --size-content-2: 45ch;
+  --size-content-3: 60ch;
+
+  /******************************************************************************
+  ***
+  *** Z-INDEX
+  ***
+  ******************************************************************************/
+
+  /* Z-INDEX layer */
+  --layer-1: 1;
+  --layer-2: 2;
+  --layer-3: 3;
+  --layer-4: 4;
+  --layer-5: 5;
+
+  /* Z-INDEX maximum important layer - use sparingly */
+  --layer-important: 2147483647;
+
+  /******************************************************************************
+  ***
+  *** THEME COLOR PALLETTE 
+  ***
+  ******************************************************************************/
+
   /* color pallette by https://github.com/YV31/gruvbox-css/blob/master/src/gruvbox-dark.css */
-  --bg_h: #1d2021;
+  
+  /* background */
+  --bg_h: #1d2021; /* hard color */
   --bg: #282828;
-  --bg_s: #32302f;
+  --bg_s: #32302f; /* soft color */
   --bg1: #3c3836;
   --bg2: #504945;
   --bg3: #665c54;
   --bg4: #7c6f64;
 
+  /* foreground */
   --fg: #fbf1c7;
   --fg1: #ebdbb2;
   --fg2: #d5c4a1;
   --fg3: #bdae93;
   --fg4: #a89984;
 
+  /* vibrant colors */
   --red: #fb4934;
   --green: #b8bb26;
   --yellow: #fabd2f;
@@ -105,6 +181,7 @@
   --gray: #928374;
   --orange: #fe8019;
 
+  /* dim colors */
   --red-dim: #cc2412;
   --green-dim: #98971a;
   --yellow-dim: #d79921;
@@ -114,12 +191,46 @@
   --gray-dim: #a89984;
   --orange-dim: #d65d0e;
 
+
+  /******************************************************************************
+  ***
+  *** DOM MANIPULATION WITH JAVASCRIPT
+  ***
+  ******************************************************************************/
+
+  /* 
+  1. Gap Btn
+  2. Buttons Mode & Style Display Property
+  3. Grid Density -- count of grids 
+  4. Grid border color, color-dim, border-radius
+  4. Container Border -- JavaScript adds a thick border when container is created
+  */
+  
+  /* gap to add in flex buttons with javascript on click */
+  --gap-btn: 0rem;
+
+  /* display none on buttons or opacity - to avoid layout changes, so focus on hover effect too... but lighthouse may find it odd */
+  --display-btns-mode: inline-block;
+  --display-btns-size: inline-block;
+
+  /* dimensions of #containerGrid > div children */
+  --grid-density-small-width: clamp(1.1875rem, 1vw + 1rem, 2.4375rem);
+  --grid-density-small-height: clamp(1.1875rem, 1vw + 1rem, 2.4375rem);
+  --grid-density-medium-width: clamp(0.2rem, 0.5vw + 0.7rem, 3.5875rem);
+  --grid-density-medium-height: clamp(0.2rem, 0.5vw + 0.7rem, 3.5875rem);
+  --grid-density-large-width: clamp(0.25rem, 1vw + 1rem, 0.5625rem);
+  --grid-density-large-height: clamp(0.25rem, 1vw + 1rem, 0.5625rem);
+
   /* custom color control with javascript */
   --grid-border-color: var(--bg);
   --grid-border-color-dim: var(--bg-dim);
   --grid-border-radius: var(--font-size-400);
-
+  
+  /* Thick border on etch sketch containerGrid to emulate etch-a-sketch */
   --container-border: 0;
+
+  /* opacity to fade in/out elements on reset */
+  --fade: 1;
 }
 
 *,
@@ -154,6 +265,11 @@ body {
     'footer';
 }
 
+  /******************************************************************************
+  ***
+  *** TYPOGRAPHY
+  ***
+  ******************************************************************************/
 p,
 li,
 h1,
@@ -169,17 +285,12 @@ a {
   color: var(--green-dim);
   transform: none;
   transition: all 0.25s ease-out;
-  /* position: relative; */
-
-  /* padding: 2em 3em; */
 }
 
 a:hover {
   color: var(--green);
   transition: all 0.25s ease-in;
   text-decoration: dashed underline;
-  /* position: relative; */
-  /* padding-block-start: calc(2em - 2px); */
 }
 
 h1 {
@@ -191,11 +302,9 @@ h1 {
   letter-spacing: 0.5rem;
 
   opacity: var(--fade-in);
-  /* text-decoration: dashed underline; */
 }
 
 /* region:      --- features add-on */
-
 .inspire {
   font-size: var(--font-size-300);
   /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
@@ -224,7 +333,9 @@ h1 {
   background-clip: text;
   color: transparent;
   text-shadow: rgba(245, 245, 245, 0.5) 3px 5px 1px;
-} /* credits: https://codepen.io/daryl/pen/XWXpyz */
+}
+
+/* credits: https://codepen.io/daryl/pen/XWXpyz */
 
 /* endregion:   --- features add-on */
 
@@ -269,11 +380,13 @@ button::before {
   /* background-color: transparent; */
   color: var(--bg_h);
 }
+
 .shrink-border:hover {
   background-color: transparent;
   box-shadow: none;
   color: var(--fg2);
 }
+
 .shrink-border::before {
   content: '';
   position: absolute;
@@ -284,9 +397,11 @@ button::before {
   border: 3px solid var(--bg_h);
   transition: opacity 0.3s, border 0.3s;
 }
+
 .shrink-border:hover::before {
   opacity: 0;
 }
+
 .shrink-border::after {
   content: '';
   position: absolute;
@@ -306,6 +421,7 @@ button::before {
   opacity: 1;
   transform: scaleX(1) scaleY(1);
 }
+
 .material-bubble {
   /* background-color: transparent; */
   color: var(--fg);
@@ -313,9 +429,11 @@ button::before {
   overflow: hidden;
   box-shadow: none;
 }
+
 .material-bubble:hover {
   color: var(--bg_h);
 }
+
 .material-bubble::before {
   content: '';
   position: absolute;
@@ -330,6 +448,7 @@ button::before {
 .material-bubble:hover::before {
   opacity: 0;
 }
+
 .material-bubble:after {
   content: '';
   position: absolute;
@@ -371,6 +490,7 @@ button::before {
 #color-controller {
   margin: 10px 0px 10px 10px;
 }
+
 /* cspell:enable */
 
 /* ************************************************************************* */
@@ -390,14 +510,15 @@ button::before {
   /* cursor: crosshair; */
 }
 
-#containerGrid > div {
+#containerGrid>div {
   background-color: #ebdbb2;
 }
 
 .grid-small {
   grid-template-columns: repeat(22, auto);
 }
-.grid-small > div {
+
+.grid-small>div {
   width: var(--grid-density-small-width);
   height: var(--grid-density-small-height);
 }
@@ -405,7 +526,8 @@ button::before {
 .grid-medium-default {
   grid-template-columns: repeat(44, auto);
 }
-.grid-medium-default > div {
+
+.grid-medium-default>div {
   width: var(--grid-density-medium-width);
   height: var(--grid-density-medium-width);
 }
@@ -413,7 +535,8 @@ button::before {
 .grid-big {
   grid-template-columns: repeat(88, auto);
 }
-.grid-big > div {
+
+.grid-big>div {
   width: var(--grid-density-large-width);
   height: var(--grid-density-large-height);
 }
@@ -434,6 +557,7 @@ button::before {
   justify-content: center;
   align-items: center;
   display: flex;
+  gap: var(--font-size-700);
 }
 
 .buttons-controls {
@@ -445,7 +569,7 @@ button::before {
 }
 
 button.buttons-controls,
-.buttons-controls > button {
+.buttons-controls>button {
   background-color: var(--bg_h);
   padding-block: var(--font-size-200);
   padding-inline: var(--font-size-100);
