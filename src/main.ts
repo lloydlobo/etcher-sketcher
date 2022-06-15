@@ -27,6 +27,7 @@ import { sleep } from './app'; // import { createButtonInspired } from './create
 ///
 /// /////////////////////////////////////////////////////////////////////////////////
 
+const ROOT = document.querySelector(':root') as HTMLElement;
 const app = document.querySelector<HTMLDivElement>('#app')!;
 const heading1 = `<h1 class="heading">etcher sketcher</h1>`;
 app.innerHTML = ` ${heading1} `;
@@ -126,6 +127,13 @@ function gridHashMap(index: number, gridChild: HTMLDivElement) {
 ///
 /// ////////////////////////////////////////////////////////////////////////////
 
+function createContainerGridBorder() {
+  console.dir({ ROOT });
+  // const containerBorder = `2rem solid #fff`;
+  const containerBorder = `calc(9 / 16 * 3vw) solid var(--grid-border-color)`;
+  ROOT.style.setProperty('--container-border', containerBorder);
+}
+
 function generateGrid(size = 32 * 44, cssClass = 'grid-medium-default') {
   const containerGame = document.getElementById('containerGrid') as HTMLElement;
   containerGame.innerHTML = '';
@@ -134,6 +142,8 @@ function generateGrid(size = 32 * 44, cssClass = 'grid-medium-default') {
     'grid-medium-default',
     'grid-big',
   );
+
+  createContainerGridBorder();
   containerGame.classList.add(cssClass);
   // smooth animation that fades in as grid is generated with css on event btnStartSketch
   fade(containerGame, 0.1, 0, 10);
@@ -385,7 +395,6 @@ function colorDivHashMap(color: string) {
 // region:      --- START SKETCH GAME LIFE CYCLE ---
 ///
 /// ////////////////////////////////////////////////////////////////////////////
-
 function startSketchGame() {
   generateGrid();
   startSketching(`classic`);

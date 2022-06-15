@@ -118,6 +118,8 @@
   --grid-border-color: var(--bg);
   --grid-border-color-dim: var(--bg-dim);
   --grid-border-radius: var(--font-size-400);
+
+  --container-border: 0;
 }
 
 *,
@@ -377,7 +379,10 @@ button::before {
 
 #containerGrid {
   display: inline-grid;
-  border: calc(9 / 16 * 3vw) solid var(--grid-border-color); /* 16:9 ratio -> ff5e5b  */
+
+  border: var(--container-border);
+  /* 16:9 ratio -> ff5e5b  */
+  /* border: calc(9 / 16 * 3vw) solid var(--grid-border-color);  */
   border-radius: var(--grid-border-radius);
   /* border-width: 6px 100px 0; */
   grid-gap: 1px;
@@ -386,7 +391,6 @@ button::before {
 }
 
 #containerGrid > div {
-  /* background-color: #d8d8d8; */
   background-color: #ebdbb2;
 }
 
@@ -394,8 +398,6 @@ button::before {
   grid-template-columns: repeat(22, auto);
 }
 .grid-small > div {
-  /* width: 39px; */
-  /* height: 39px; */
   width: var(--grid-density-small-width);
   height: var(--grid-density-small-height);
 }
@@ -404,8 +406,6 @@ button::before {
   grid-template-columns: repeat(44, auto);
 }
 .grid-medium-default > div {
-  /* width: 19px; */
-  /* height: 19px; */
   width: var(--grid-density-medium-width);
   height: var(--grid-density-medium-width);
 }
@@ -414,8 +414,6 @@ button::before {
   grid-template-columns: repeat(88, auto);
 }
 .grid-big > div {
-  /* width: 9px; */
-  /* height: 9px; */
   width: var(--grid-density-large-width);
   height: var(--grid-density-large-height);
 }
@@ -445,8 +443,6 @@ button::before {
 
 button.buttons-controls,
 .buttons-controls > button {
-  /* border-radius: var(--border-radius); */
-  /* background-color: #d8d8d8; */
   background-color: var(--bg_h);
   padding-block: var(--font-size-200);
   padding-inline: var(--font-size-100);
