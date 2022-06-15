@@ -452,6 +452,7 @@ button.buttons-controls,
   padding-inline: var(--font-size-100);
   font-size: var(--font-size-300);
   color: var(--fg2);
+  margin-inline: 0;
 
   text-transform: lowercase;
 }
