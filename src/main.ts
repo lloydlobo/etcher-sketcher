@@ -55,10 +55,10 @@ const MODE_YIN = `yin`;
 const MODE_YANG = `yang`;
 
 const RESET_BACKGROUND_COLOR = '#EBDBB2';
-
+// pollack diffuse color
 // prettier-ignore-start
 const MODE_SELECT_STYLE = {
-  [MODE_CLASSIC]: { backgroundColor: '#fbf1c7', opacity: '1' },
+  [MODE_CLASSIC]: { backgroundColor: '#3c3836', opacity: '1' },
   [MODE_MODERN]: {
     colorPallette: [ '#fbf1c7', '#f7f1c7', '#f3f1c7', '#f0f1c7', '#ecf1c7', '#e8f1c7', '#e4f1c7', '#e0f1c7', '#dcf1c7', '#d8f1c7', '#d4f1c7', '#d0f1c7', ], // prettier-ignore
     opacity: '1',
