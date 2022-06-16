@@ -578,11 +578,11 @@ button.nav__btn-get-inspired#btnGetInspired[data-transparent='false'] {
   height: var(--grid-density-medium-width);
 }
 
-.grid-big {
+.grid-large {
   grid-template-columns: repeat(88, auto);
 }
 
-.grid-big > div {
+.grid-large > div {
   width: var(--grid-density-large-width);
   height: var(--grid-density-large-height);
 }
@@ -660,7 +660,7 @@ button[data-button-style-none] {
 }
 [data-theme='dark'] {
   color-scheme: dark;
-  --bg: var(--bg_h);
+  // --bg: var(--fg); // this is removing the container border !!!
   --fg: var(--fg);
 }
 
@@ -668,9 +668,12 @@ button[data-button-style-none] {
   background-color: none;
 } // .nav__theme_toggle
 
+.nav__theme-toggle__svg__moon-mask,
 .nav__theme-toggle__svg__sun {
-  fill: var(--theme-toggle-fill-color, var(--yellow-dim));
-  color: var(--theme-toggle-color, var(--yellow));
-  width: var(--theme-toggle-width, var(--font-size-700));
-  height: var(--theme-toggle-height, var(--font-size-700));
+  fill: var(--theme-toggle-fill-color);
+  stroke: none;
+
+  // color: var(--theme-toggle-color, var(--yellow));
+  // width: var(--theme-toggle-width);
+  // height: var(--theme-toggle-height);
 }

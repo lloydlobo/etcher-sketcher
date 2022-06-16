@@ -6,7 +6,7 @@ import {
   reflectPreference,
   theme,
   setPreference,
-  gridHashMap,
+  // gridHashMap,
 } from './app'; // import { createButtonInspired } from './createButtonInspired';
 import { fade } from './app/helper/fade';
 import { getRandomNumber } from './app/helper/get-random-number';
@@ -28,7 +28,7 @@ console.log(ThemeToggle);
 /// region:      --- EVENT LISTENERS MOUSE SKETCH ---
 /// region:      --- BUTTONS SELECT ---
 /// region:      --- EVENTS ---
-/// region:      --- HASH MAP STENCIL ---
+/// region:      --- Mode MAP STENCIL ---
 /// region:      --- START SKETCH GAME LIFE CYCLE ---
 /// region:      --- MAIN ---
 
@@ -63,9 +63,15 @@ const MODE_SELECT_STYLE = {
     colorPallette: [ '#fbf1c7', '#f7f1c7', '#f3f1c7', '#f0f1c7', '#ecf1c7', '#e8f1c7', '#e4f1c7', '#e0f1c7', '#dcf1c7', '#d8f1c7', '#d4f1c7', '#d0f1c7', ], // prettier-ignore
     opacity: '1',
   },
+
+  [MODE_ZEN]: {
+    colorPallette: [ '#fbf1c7', '#f7f1c7', '#f3f1c7', '#f0f1c7', '#ecf1c7', '#e8f1c7', '#e4f1c7', '#e0f1c7', '#dcf1c7', '#d8f1c7', '#d4f1c7', '#d0f1c7', ], // prettier-ignore
+    opacity: '1',
+  },
+
+  // [MODE_ZEN]: { backgroundColor: '#fbf1c7', opacity: '1' },
   [MODE_YIN]: { backgroundColor: '#fbf1c7', opacity: '1' },
   [MODE_YANG]: { backgroundColor: '#fbf1c7', opacity: '1' },
-  [MODE_ZEN]: { backgroundColor: '#fbf1c7', opacity: '1' },
 }; // prettier-ignore-end
 
 let modeCurrent = '';
@@ -86,11 +92,7 @@ const btnGetInspired = document.getElementById(
   'btnGetInspired',
 ) as HTMLButtonElement;
 
-// const allBtnsSizeAndMode = document.querySelectorAll<HTMLButtonElement>(
-//   '#btnsSize, #btnsMode #btnErase',
-// );
-
-// console.log(allBtnsSizeAndMode);
+// const allBtnsSizeAndMode = document.querySelectorAll<HTMLButtonElement>( '#btnsSize, #btnsMode #btnErase',); console.log(allBtnsSizeAndMode);
 
 /// ////////////////////////////////////////////////////////////////////////////
 ///
@@ -106,7 +108,12 @@ function createContainerGridBorder() {
 function generateGrid(size = 32 * 44, cssClass = 'grid-medium-default') {
   const containerGame = document.getElementById('containerGrid') as HTMLElement;
   containerGame.innerHTML = '';
-  containerGame.classList.remove( 'grid-small', 'grid-medium-default', 'grid-big',); // prettier-ignore
+
+  containerGame.classList.remove(
+    'grid-small',
+    'grid-medium-default',
+    'grid-large',
+  );
 
   createContainerGridBorder();
   containerGame.classList.add(cssClass);
@@ -115,7 +122,7 @@ function generateGrid(size = 32 * 44, cssClass = 'grid-medium-default') {
   for (let i = 0; i < size; i += 1) {
     const div = document.createElement('div') as HTMLDivElement;
     containerGame.appendChild(div);
-    gridHashMap(i, div);
+    // gridHashMap(i, div);
   }
 }
 
@@ -153,13 +160,26 @@ function startSketching(mode: string) {
         (event.target as HTMLDivElement).style.backgroundColor = MODE_SELECT_STYLE[MODE_CLASSIC].backgroundColor; // prettier-ignore
         (event.target as HTMLDivElement).style.opacity = '1';
       } else if (modeIsModern) {
-        (event.target as HTMLDivElement).style.backgroundColor =
-          MODE_SELECT_STYLE[MODE_MODERN].colorPallette[ getRandomNumber( 0, MODE_SELECT_STYLE[MODE_MODERN].colorPallette.length - 1,) ]; // prettier-ignore
-      } else if (modeIsZen) {
-        const zenPallette = [ '#EF476F', '#FFD166', '#06D6A0', '#118AB2', '#073B4C', ]; // prettier-ignore
-        const randomColor = zenPallette[Math.floor(Math.random() * zenPallette.length)]; // prettier-ignore
+        const colorPalletteModern = [
+          '#EF476F',
+          '#FFD166',
+          '#06D6A0',
+          '#118AB2',
+          '#073B4C',
+        ];
+        const randomColor =
+          colorPalletteModern[
+            Math.floor(Math.random() * colorPalletteModern.length)
+          ];
         (event.target as HTMLDivElement).style.backgroundColor = randomColor;
         (event.target as HTMLDivElement).style.opacity = '1';
+      } else if (modeIsZen) {
+        (event.target as HTMLDivElement).style.backgroundColor =
+            MODE_SELECT_STYLE[MODE_ZEN].colorPallette[ getRandomNumber( 0, MODE_SELECT_STYLE[MODE_ZEN].colorPallette.length - 1,) ]; // prettier-ignore
+        // const zenPallette = ['#EF476F', '#FFD166', '#06D6A0', '#118AB2', '#073B4C',];
+        // const randomColor = zenPallette[Math.floor(Math.random() * zenPallette.length)];
+        // (event.target as HTMLDivElement).style.backgroundColor = randomColor;
+        // (event.target as HTMLDivElement).style.opacity = '1';
       }
     }); // end of mouseover event listener
 
@@ -189,14 +209,16 @@ function chooseButton(button: HTMLButtonElement) {
   button.classList.add('btn-active');
 }
 
-function refreshGridWithNewSize(
+type SizeType = 'grid-small' | 'grid-medium-default' | 'grid-large';
+export function refreshGridWithNewSize(
   SMALL: number,
-  btnSize: HTMLButtonElement,
   btnClass: string,
+  MODE: SizeType,
+  btnSize: HTMLButtonElement,
 ) {
   erase();
   generateGrid(SMALL, btnClass);
-  startSketching(MODE_CLASSIC);
+  startSketching(MODE);
   chooseButton(btnSize);
 }
 
@@ -210,15 +232,21 @@ function chooseSize() {
   btnsSize.forEach((btnSize) => {
     btnSize.addEventListener('click', () => {
       if (btnSize.classList.contains('small')) {
-        refreshGridWithNewSize(SMALL, btnSize, 'grid-small');
+        // refreshGridWithNewSize(SMALL, MODE_CLASSIC, 'grid-small', btnSize);
+        erase();
+        generateGrid(SMALL, 'grid-small');
+        startSketching(MODE_CLASSIC);
+        chooseButton(btnSize);
       } else if (btnSize.classList.contains('medium')) {
+        // refreshGridWithNewSize( MEDIUM, MODE_CLASSIC, 'grid-medium-default', btnSize,); // prettier-ignore
         erase();
         generateGrid(MEDIUM, 'grid-medium-default');
         startSketching(MODE_CLASSIC);
         chooseButton(btnSize);
-      } else if (btnSize.classList.contains('big')) {
+      } else if (btnSize.classList.contains('large')) {
+        // refreshGridWithNewSize(BIG, MODE_CLASSIC, 'grid-large', btnSize);
         erase();
-        generateGrid(BIG, 'grid-big');
+        generateGrid(BIG, 'grid-large');
         startSketching(MODE_CLASSIC);
         chooseButton(btnSize);
       }
