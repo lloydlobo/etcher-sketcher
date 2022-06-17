@@ -484,14 +484,10 @@ h1 {
 .main__container-grid#containerGrid {
   display: inline-grid;
   border: var(--container-border);
-  /* 16:9 ratio -> ff5e5b  */
-  border-radius: var(--grid-border-radius);
-  // border-width: 6px 100px 0;
-  // grid-gap: 1px;
-  background-color: var(
-    --container-grid-bg
-  ); // make it a little bit less alpha or lighter(greyish) than the border edges o it blends
-  /* cursor: crosshair; */
+  border-radius: 5px;
+
+  // make it a little bit less alpha or lighter(greyish) than the border edges o it blends
+  background-color: var(--container-grid-bg);
 }
 
 .main__container-grid#containerGrid[data-ruler='true'] > * {
