@@ -378,44 +378,6 @@ h1 {
 
 /* region:      --- animation --- */
 
-// button {
-//   position: relative;
-//   border: none;
-//   /* font-size: 18px; */
-//   transition: color 0.5s, transform 0.2s, background-color 0.2s;
-//   /* outline: none; */
-//   border-radius: 3px;
-//   margin: 0 10px;
-//   /* padding: 23px 33px; */
-//   padding-block: var(--font-size-400);
-//   padding-inline: var(--font-size-700);
-//   border: 3px solid transparent;
-//   cursor: pointer;
-//   background-color: var(--bg1);
-//   letter-spacing: var(--font-size-100);
-// }
-//
-// button:active {
-//   transform: translateY(3px);
-// }
-//
-// button::after,
-// button::before {
-//   border-radius: 3px;
-// }
-// button.nav__btn-get-inspired#btnGetInspired[data-transparent='true'] {
-//   opacity: var(--fade-btn-get-inspired);
-//   position: absolute; // top: -100px;
-//   transition: position 0.5s ease-out; // appearance: none;
-// }
-//
-// button.nav__btn-get-inspired#btnGetInspired[data-transparent='false'] {
-//   transition: all 2s ease-in;
-//   opacity: 1;
-//   top: 0;
-//   position: relative;
-// }
-
 .shrink-border {
   /* background-color: transparent; */
   color: var(--bg_h);
@@ -496,8 +458,6 @@ h1 {
   left: 0;
   width: 200px;
   height: 200px;
-  /* background-color: lighten(var(--blue-dim), 10%); */
-  /* background-color: var(--bg4); */
   background-color: var(--fg2);
   border-color: transparent;
   border-radius: 50%;
@@ -511,24 +471,6 @@ h1 {
   opacity: 1;
   transform-origin: 100px 100px;
   transform: scale(1) translate(-10px, -70px);
-}
-
-/* ************************************************************************* */
-/* ************************************************************************* */
-/* ****************************interactive buttons************************** */
-/* ************************************************************************* */
-/* ************************************************************************* */
-/* cspell:disable */
-#btnsMode {
-  display: var(--display-btns-mode);
-}
-
-#btnsSize {
-  display: var(--display-btns-size);
-}
-
-#color-controller {
-  margin: 10px 0px 10px 10px;
 }
 
 /* cspell:enable */
@@ -611,7 +553,7 @@ h1 {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: var(--size-fluid-1);
 }
 
 button.buttons-controls,
@@ -626,13 +568,6 @@ button.buttons-controls,
   text-transform: lowercase;
 }
 
-button[data-button-style-none] {
-  background-color: transparent;
-  color: var(--fg2);
-  border: none;
-  padding: 0;
-  font-size: var(--font-size-400);
-}
 /* .buttons-controls {
   display: none;
 } */
