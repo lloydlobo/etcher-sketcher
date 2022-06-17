@@ -356,7 +356,7 @@ function toggleThemeOnWindowLoad() {
   window.onload = (): void => {
     reflectPreference();
     const btnThemeToggle = document.querySelector(
-      '#theme-toggle',
+      '#themeToggle',
     ) as HTMLElement;
     btnThemeToggle.addEventListener('click', (event) => {
       console.log('clicked', event);

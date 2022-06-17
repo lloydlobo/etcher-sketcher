@@ -1,4 +1,4 @@
-@use "../utilities" as *;
+@use '../utilities' as *;
 // https://codepen.io/SaraSoueidan/pen/jpBbrq/?editors=1100
 
 .toggle {
@@ -12,7 +12,7 @@
     font-weight: 700;
     color: var(--toggle);
 
-    &[for="dark"] {
+    &[for='dark'] {
       line-height: rem(24);
       margin-right: rem(13);
     }
@@ -23,7 +23,7 @@
     height: rem(24);
   }
 
-  input[type="radio"] {
+  input[type='radio'] {
     margin: 0 rem(-2) 0 rem(-2);
     opacity: 0;
     width: rem(24);

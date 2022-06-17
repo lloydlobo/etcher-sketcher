@@ -10,6 +10,7 @@ button {
   cursor: pointer;
   background-color: var(--bg1);
   letter-spacing: var(--font-size-100);
+  font-size: var(--font-size-fluid-0);
 
   &:active {
     transform: translateY(3px);
