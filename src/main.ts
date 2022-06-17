@@ -1,4 +1,4 @@
-/* eslint-disable no-console */ /* eslint-disable no-param-reassign */ // cspell:ignore btns eslintno
+/* eslint-disable no-console */ /* eslint-disable no-param-reassign */ // cspell:ignore btns eslintno steelblue
 import './scss/style.scss';
 import { sleep, fade } from './app/helper';
 import { getRandomNumber } from './app/helper/get-random-number';
@@ -136,6 +136,14 @@ function erase() {
 ///
 /// ////////////////////////////////////////////////////////////////////////////
 
+// function colorHTMLElement(element: HTMLElement, color: string) {
+//   element.style.backgroundColor = color;
+// }
+
+function colorCssROOTVariable(variable: string, color: string | string) {
+  ROOT.style.setProperty(variable, color);
+}
+
 function startSketching(mode: string) {
   const gridChildren = document.querySelectorAll<HTMLDivElement>( '#containerGrid > div',); // prettier-ignore
 
@@ -150,13 +158,7 @@ function startSketching(mode: string) {
         (event.target as HTMLDivElement).style.backgroundColor = MODE_SELECT_STYLE[MODE_CLASSIC].backgroundColor; // prettier-ignore
         (event.target as HTMLDivElement).style.opacity = '1';
       } else if (modeIsModern) {
-        const colorPalletteModern = [
-          '#EF476F',
-          '#FFD166',
-          '#06D6A0',
-          '#118AB2',
-          '#073B4C',
-        ];
+        const colorPalletteModern = [ '#EF476F', '#FFD166', '#06D6A0', '#118AB2', '#073B4C', ]; // prettier-ignore
         const randomColor =
           colorPalletteModern[
             Math.floor(Math.random() * colorPalletteModern.length)
@@ -165,11 +167,7 @@ function startSketching(mode: string) {
         (event.target as HTMLDivElement).style.opacity = '1';
       } else if (modeIsZen) {
         (event.target as HTMLDivElement).style.backgroundColor =
-            MODE_SELECT_STYLE[MODE_ZEN].colorPallette[ getRandomNumber( 0, MODE_SELECT_STYLE[MODE_ZEN].colorPallette.length - 1,) ]; // prettier-ignore
-        // const zenPallette = ['#EF476F', '#FFD166', '#06D6A0', '#118AB2', '#073B4C',];
-        // const randomColor = zenPallette[Math.floor(Math.random() * zenPallette.length)];
-        // (event.target as HTMLDivElement).style.backgroundColor = randomColor;
-        // (event.target as HTMLDivElement).style.opacity = '1';
+        MODE_SELECT_STYLE[MODE_ZEN].colorPallette[ getRandomNumber( 0, MODE_SELECT_STYLE[MODE_ZEN].colorPallette.length - 1,) ]; // prettier-ignore
       }
     }); // end of mouseover event listener
 
@@ -249,20 +247,23 @@ function chooseMode() {
   btnsMode.forEach((btnMode) => {
     btnMode.addEventListener('click', () => {
       if (btnMode.classList.contains('classic')) {
-        // erase();
+        erase();
         // generateGrid(32 * 44, 'grid-medium-default');
+        colorCssROOTVariable('--bg-html', 'var(--red-dim)');
         startSketching(MODE_CLASSIC);
         chooseButton(btnMode);
         modeCurrent = MODE_CLASSIC;
       } else if (btnMode.classList.contains('modern')) {
-        // erase();
+        erase();
         // generateGrid(32 * 44, 'grid-medium-default');
+        colorCssROOTVariable('--bg-html', 'var(--bg_h)');
         startSketching(MODE_MODERN);
         chooseButton(btnMode);
         modeCurrent = MODE_MODERN;
       } else if (btnMode.classList.contains('zen')) {
-        // erase();
+        erase();
         // generateGrid(32 * 44, 'grid-medium-default');
+        colorCssROOTVariable('--bg-html', 'steelblue');
         startSketching(MODE_ZEN);
         chooseButton(btnMode);
         modeCurrent = MODE_ZEN;

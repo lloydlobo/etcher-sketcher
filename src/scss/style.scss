@@ -248,12 +248,19 @@
   --fade-main-heading: 0;
 
   --fade-btn-get-inspired: 0;
+
+  // html color control with javascript
+  --bg-html: var(--bg_h);
 } /* end of: :root */
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+html {
+  background-color: var(--bg-html);
 }
 
 body {
@@ -271,7 +278,7 @@ body {
   font-family: 'Courier New', Courier, monospace;
 
   color: var(--fg);
-  background-color: var(--bg_h);
+  background-color: var(--bg-html);
 
   overflow-x: hidden;
 
@@ -500,6 +507,28 @@ h1 {
   background-color: #ebdbb2;
 }
 
+// for DEVelopment purposes - set Mobile(no touch) in browser dev tools
+@media (hover: hover) {
+  // targets the devices that can hover (grid children)
+  // body {
+  // background-color: steelblue !important;
+  // }
+
+  #containerGrid > div {
+    background-color: #ebdbb2;
+  }
+} // on desktop the color changes in this media query
+
+@media (pointer: coarse) {
+} // touch device tv
+
+@media (pointer: fine) {
+} // for device which use stylus
+
+@media (hover: none) {
+  // targets the devices that don't hover (grid children)
+} // use sparingly as this needs lot of work. So first make what you expect and move it to hover: hover
+
 .grid-small {
   grid-template-columns: repeat(22, auto);
 }
@@ -548,13 +577,14 @@ h1 {
 /// ///////////////////////////////////////////////////////////////////////////
 @media (dynamic-range: high) {
   [data-theme='dark'] {
-    --bg: #1d1d1d;
-    --fg: #fafafa;
+    --bg_h: var(--fg);
+    --fg: var(--fg);
   }
 }
+
 [data-theme='dark'] {
   color-scheme: dark;
-  // --bg: var(--fg); // this is removing the container border !!!
+  // --bg: var(--bg_h); // this is removing the container border !!!
   --fg: var(--fg);
 }
 
