@@ -209,12 +209,14 @@
   /* display none on buttons or opacity - to avoid layout changes, so focus on hover effect too... but lighthouse may find it odd */
   --display-btns-mode: inline-block;
   --display-btns-size: inline-block;
-
+  // experiment to reduce grid size on mobile
+  --grid-density-medium-width: clamp(0.4rem, 1vw + 0.2rem, 3.5875rem);
+  --grid-density-medium-height: clamp(0.4rem, 1vw + 0.2rem, 3.5875rem);
   /* dimensions of #containerGrid > div children */
   --grid-density-small-width: clamp(1.1875rem, 1vw + 1rem, 2.4375rem);
   --grid-density-small-height: clamp(1.1875rem, 1vw + 1rem, 2.4375rem);
-  --grid-density-medium-width: clamp(0.2rem, 0.5vw + 0.7rem, 3.5875rem);
-  --grid-density-medium-height: clamp(0.2rem, 0.5vw + 0.7rem, 3.5875rem);
+  //  --grid-density-medium-width: clamp(0.2rem, 0.5vw + 0.7rem, 3.5875rem);
+  //  --grid-density-medium-height: clamp(0.2rem, 0.5vw + 0.7rem, 3.5875rem);
   --grid-density-large-width: clamp(0.25rem, 1vw + 1rem, 0.5625rem);
   --grid-density-large-height: clamp(0.25rem, 1vw + 1rem, 0.5625rem);
 
