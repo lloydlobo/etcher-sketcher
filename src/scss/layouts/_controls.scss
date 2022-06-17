@@ -18,15 +18,13 @@
 }
 
 .buttons-controls {
+  @extend button;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: var(--size-fluid-1);
-}
 
-button.buttons-controls,
-.buttons-controls > button {
   background-color: var(--bg_h);
   padding-block: var(--font-size-200);
   padding-inline: var(--font-size-100);
@@ -35,4 +33,9 @@ button.buttons-controls,
   margin-inline: 0;
 
   text-transform: lowercase;
+
+  > button {
+    // this styles all controls - size and mode - except erase and grid
+    @extend .buttons-controls;
+  }
 }
