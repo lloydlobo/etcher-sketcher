@@ -213,12 +213,12 @@
   --grid-density-medium-width: clamp(0.4rem, 1vw + 0.2rem, 3.5875rem);
   --grid-density-medium-height: clamp(0.4rem, 1vw + 0.2rem, 3.5875rem);
   /* dimensions of #containerGrid > div children */
-  --grid-density-small-width: clamp(1.1875rem, 1vw + 1rem, 2.4375rem);
-  --grid-density-small-height: clamp(1.1875rem, 1vw + 1rem, 2.4375rem);
+  --grid-density-small-width: clamp(0.8rem, 1vw + 0.2rem, 2.4375rem);
+  --grid-density-small-height: clamp(0.8rem, 1vw + 0.2rem, 2.4375rem);
   //  --grid-density-medium-width: clamp(0.2rem, 0.5vw + 0.7rem, 3.5875rem);
   //  --grid-density-medium-height: clamp(0.2rem, 0.5vw + 0.7rem, 3.5875rem);
-  --grid-density-large-width: clamp(0.25rem, 1vw + 1rem, 0.5625rem);
-  --grid-density-large-height: clamp(0.25rem, 1vw + 1rem, 0.5625rem);
+  --grid-density-large-width: clamp(0.06rem, 1vw + 0rem, 0.5625rem);
+  --grid-density-large-height: clamp(0.06rem, 1vw + 0rem, 0.5625rem);
 
   --font-size-fluid-0: clamp(0.75rem, 1.5vw, 1rem);
   --font-size-fluid-1: clamp(1rem, 2vw, 1.5rem);
