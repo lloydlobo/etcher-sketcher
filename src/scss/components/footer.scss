@@ -1,0 +1,5 @@
+footer {
+  font-size: var(--font-size-300);
+  text-transform: lowercase;
+  letter-spacing: calc(var(--font-size-100) / var(--type-ratio-golden-ratio));
+}
