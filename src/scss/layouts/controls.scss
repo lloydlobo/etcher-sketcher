@@ -1,0 +1,38 @@
+/* ************************************************************************* */
+/*  
+    ***
+    *** region: --- CONTROLS UI ---
+    ***
+*/
+/* ************************************************************************* */
+
+.main__controls[data-hidden='true'] {
+  display: none;
+}
+
+.main__controls[data-hidden='false'] {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  gap: var(--font-size-700);
+}
+
+.buttons-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--size-fluid-1);
+}
+
+button.buttons-controls,
+.buttons-controls > button {
+  background-color: var(--bg_h);
+  padding-block: var(--font-size-200);
+  padding-inline: var(--font-size-100);
+  font-size: var(--font-size-300);
+  color: var(--fg2);
+  margin-inline: 0;
+
+  text-transform: lowercase;
+}
