@@ -1,0 +1,16 @@
+body {
+  // background-color: aqua !important;
+  &::-webkit-scrollbar {
+    width: var(--size-1); // 0.25 rem or whatever you want
+  }
+
+  &::-webkit-scrollbar-track {
+    // background: rgb( from var(--bg-html) / 0.4); // https://daverupert.com/2021/10/alpha-paintlet/
+    background: var(--bg_h);
+    // --alpha: 0.4;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: hsla(28, 11%, 44%, 0.514); // --bg4
+  }
+}

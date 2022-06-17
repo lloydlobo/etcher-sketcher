@@ -1,0 +1,73 @@
+:root {
+  --navbar-font-size: var(--font-size-fluid-0);
+  --navbar-text-primary-color: var(--grey);
+  --navbar-text-secondary-color: var(--fg-4);
+  --text-primary-color: var(--fg2);
+  --text-secondary-color: var(--fg4);
+  --bg-primary-color: var(--bg-html);
+  --bg-secondary-color: var(--bg_s);
+  //   --navbar-height: 60px;
+  //   --navbar-padding: 0 20px;
+  //   --navbar-font-weight: bold;
+  //   --navbar-font-color: #fff;
+  //   --navbar-font-color-hover: #fff;
+  --main-margin-left: 5rem;
+}
+
+main {
+  margin-left: var(--main-margin-left);
+  padding: var(--size-4);
+}
+
+.navbar {
+  border: 0.5px dotted var(--bg-primary-color);
+  width: var(--main-margin-left);
+  height: 100vh;
+
+  position: fixed;
+  left: 0; // wasn't recommended by the author
+  top: 0; // wasn't recommended by the author
+
+  background-color: var(--bg-primary-color);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1618);
+  padding-inline: var(--size-3); // enable this later!!!
+  font-size: var(--navbar-font-size);
+
+  // overflow: scroll;
+}
+
+// no more than 3 nested levels please
+.navbar__nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-3);
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // padding: var(--size-2) 0;
+
+    > *:first-child {
+      flex: 1; // makes the white rectangle of same size -- mmm use grid
+      // padding-top: var(--size-4);
+      border: 1px solid wheat;
+      // margin-left: 100px;
+    } // disable this later !!!!!
+
+    &:last-child {
+      display: flex;
+      margin-top: clamp(10vh, 10vh + var(--size-4), 90vh);
+      // hotfix!!!!!!
+      // border: 1px dotted rebeccapurple;
+    }
+
+    &__link {
+      // display: flex;
+      color: var(--text-primary-color);
+    }
+  }
+}
