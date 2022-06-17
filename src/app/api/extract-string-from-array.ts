@@ -1,15 +1,12 @@
-// cspell:disable
-/* eslint-disable camelcase */
-// cspell:enable
 export const extractStringFromArray = async (data: any) => {
   try {
-    let zen_quotes = null;
-    let programming_quotes = null;
-    ({ zen_quotes, programming_quotes } = await data);
-    // cspell:enable
+    let quotesZen = null;
+    let quotesProgramming = null;
+    ({ zen_quotes: quotesZen, programming_quotes: quotesProgramming } =
+      await data);
     return {
-      zen_quotes: [...zen_quotes],
-      programming_quotes: [...programming_quotes],
+      zen_quotes: [...quotesZen],
+      programming_quotes: [...quotesProgramming],
     };
   } catch (error) {
     throw new Error("Error: 'extractStringFromArray', fetch failed");

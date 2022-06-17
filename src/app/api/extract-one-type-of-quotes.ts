@@ -1,5 +1,4 @@
-/* cspell:disable-next-line */
-/* eslint-disable camelcase */
+// cspell:ignore undef
 /* eslint-disable no-undef */
 export const extractOneTypeOfQuotes = async (
   dataToStrings: any,
@@ -7,24 +6,27 @@ export const extractOneTypeOfQuotes = async (
 ): Promise<any> => {
   const category = categoryQuote.toLowerCase();
   try {
-    const { zen_quotes, programming_quotes } = dataToStrings;
-    const zen = await zen_quotes;
-    const programming = await programming_quotes;
+    const { zen_quotes: quotesZen, programming_quotes: quotesProgramming } =
+      dataToStrings;
+    const zen = await quotesZen;
+    const programming = await quotesProgramming;
     if (category === `zen`) {
       return zen;
     }
     if (category === `programming`) {
       return programming;
     }
-    // return "no such category";
     throw new Error('no such category');
   } catch (error) {
-    // console.error(error);
     throw new Error('no such category');
   }
 };
 
-// region:      --- UNIT TEST SUITE ---
+/// ///////////////////////////////////////////////////////////////////////////
+///
+/// region:      --- UNIT TEST SUITE ---
+///
+/// ///////////////////////////////////////////////////////////////////////////
 
 // @vitest-environment happy-dom
 if (import.meta.vitest) {
