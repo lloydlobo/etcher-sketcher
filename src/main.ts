@@ -1,15 +1,7 @@
 /* eslint-disable no-console */ /* eslint-disable no-param-reassign */ // cspell:ignore btns eslintno
 import './scss/style.scss';
-import {
-  ThemeToggle,
-  reflectPreference,
-  theme,
-  setPreference,
-} from './app/ui/theme-toggle'; // import { createButtonInspired } from './createButtonInspired';
 import { sleep, fade } from './app/helper';
 import { getRandomNumber } from './app/helper/get-random-number';
-
-console.log(ThemeToggle);
 
 /// /////////////////////////////////////////////////////////////////////////////
 ///
@@ -350,6 +342,40 @@ const btnShowGridLayout = document.getElementById(
 ) as HTMLButtonElement;
 btnShowGridLayout.addEventListener('click', displayGridLayout);
 
+/// ///////////////////////////////////////////////////////////////////////////
+///
+/// region:      --- THEME TOGGLE ---
+///
+/// ///////////////////////////////////////////////////////////////////////////
+
+export const toggleTheme = (): string => {
+  if (localStorage.getItem('theme-preference')) {
+    return localStorage.getItem('theme-preference') as string;
+  }
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
+};
+
+export const theme: { value: string } = {
+  value: toggleTheme(),
+};
+
+export const reflectPreference = () => {
+  document.firstElementChild!.setAttribute('data-theme', theme.value);
+  document
+    .querySelector('#themeToggle')!
+    .setAttribute('aria-live', theme.value);
+  // document.querySelector('#theme-toggle')?.setAttribute('data-theme', theme.value); // const body = document.querySelector('body'); // body.classList.remove('light', 'dark'); // body.classList.add(theme);
+};
+
+export const setPreference = () => {
+  localStorage.setItem('theme-preference', theme.value);
+  reflectPreference();
+};
+
+// cspell:disable-next-line // immutable data structures --> mori, immutable.js for PERSISTANT DATA STRUCTURES ... other FP lib are underscore Lodash Ramda.... --> Context: JSUnconf Anana Vakil Learn Functional Programming WIt Javascript // https://crates.io/crates/persistence Rust lib does something similar?
+
 function toggleThemeOnWindowLoad() {
   window.onload = (): void => {
     reflectPreference();
@@ -425,3 +451,15 @@ main();
 
 // const rootVariables = getROOTStyleVariables();
 // console.dir(rootVariables);
+
+// export class ThemeToggle {
+//   theme: string;
+
+//   constructor() {
+//     this.theme = 'dark';
+//   }
+
+//   toggleTheme() {
+//     this.theme = this.theme === 'dark' ? 'light' : 'dark';
+//   }
+// }
