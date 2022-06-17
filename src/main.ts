@@ -1,14 +1,12 @@
 /* eslint-disable no-console */ /* eslint-disable no-param-reassign */ // cspell:ignore btns eslintno
 import './scss/style.scss';
 import {
-  sleep,
   ThemeToggle,
   reflectPreference,
   theme,
   setPreference,
-  // gridHashMap,
-} from './app'; // import { createButtonInspired } from './createButtonInspired';
-import { fade } from './app/helper/fade';
+} from './app/ui/theme-toggle'; // import { createButtonInspired } from './createButtonInspired';
+import { sleep, fade } from './app/helper';
 import { getRandomNumber } from './app/helper/get-random-number';
 
 console.log(ThemeToggle);
