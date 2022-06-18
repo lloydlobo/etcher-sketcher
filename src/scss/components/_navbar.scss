@@ -117,6 +117,8 @@ main {
 .navbar__nav__item__link {
     &__text {
         display: none; // show the text only when the link is hovered
+        font-size: var(--font-size-0);
+        text-transform: lowercase;
     }
 
     svg {
