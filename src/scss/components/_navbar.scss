@@ -161,6 +161,7 @@ main {
         height: 100vh;
         left: 0; // wasn't recommended by the author
         top: 0; // wasn't recommended by the author
+        overflow: hidden;
 
         &:hover {
             width: 10rem;
