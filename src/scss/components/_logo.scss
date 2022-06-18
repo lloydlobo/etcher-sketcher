@@ -1,0 +1,51 @@
+// cspell:ignore letterspacing
+.navbar__nav__logo {
+  font-weight: var(--font-weight-7);
+  text-transform: capitalize;
+  margin-bottom: var(--size-3);
+  text-align: center;
+  background: var(--bg-secondary-color);
+  color: var(--text-primary-color); // link - a is over riding this
+
+  font-style: italic;
+  letter-spacing: var(--font-letterspacing-3);
+
+  transition: transform var(--transition-speed);
+  & span {
+    // color: red !important;
+    color: var(--text-primary-color);
+    text-decoration: none;
+  } // text of logo
+
+  // & svg {
+  //   // display: block; // for demo it displays hidden svg
+
+  //   transform: rotate(0deg);
+  //   transition: transform var(--transition-speed);
+  // }
+}
+
+// .navbar {
+//   &:hover {
+//     .navbar__nav__logo {
+//       & svg {
+//         // display: block;
+//         transition: transform var(--transition-speed);
+//         transform: rotate(-180deg);
+//       }
+//     }
+//   }
+// }
+
+.navbar .navbar__nav__logo svg {
+  transform: rotate(0deg);
+
+  filter: grayscale(100%);
+  transition: all var(--transition-speed);
+}
+
+.navbar:hover .navbar__nav__logo svg {
+  // transform: rotate(-180deg);
+  filter: grayscale(0%);
+  transition: all var(--transition-speed) ease 1s;
+}

@@ -4,12 +4,12 @@
   --navbar-text-secondary-color: var(--fg-4);
   --text-primary-color: var(--fg2);
   --text-secondary-color: var(--fg4);
-  --bg-primary-color: varf(--bg-html);
+  --bg-primary-color: var(--bg-html);
   --bg-secondary-color: var(--bg_s);
   --main-margin-left: 5rem;
   --svg-width-min: 2rem;
   --svg-margin: 0 1.5rem;
-  --transtion-speed: 0.6s;
+  --transition-speed: 600ms;
 }
 
 main {
@@ -35,6 +35,8 @@ main {
 
   &:hover {
     width: 10rem;
+    // transition: all 600ms ease;
+    // transition: transform var(--transition-speed);
 
     .navbar__nav__item {
       &__link__text {
@@ -166,4 +168,19 @@ main {
   &-secondary {
     transition: var(--transition-speed);
   } // instead of hard coding hover props, set filter on nav__item__link
+}
+
+/// ///////////////////////////////////////////////////////////////////////////
+///
+/// media queries
+///
+/// ///////////////////////////////////////////////////////////////////////////
+
+// small screen
+
+@media screen and (max-width: 600px) {
+}
+// large screen
+
+@media screen and (min-width: 600px) {
 }
