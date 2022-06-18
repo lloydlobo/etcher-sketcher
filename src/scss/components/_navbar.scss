@@ -19,11 +19,8 @@ main {
 
 .navbar {
   border: 0.5px dotted var(--bg-primary-color);
-  width: var(--main-margin-left);
-  height: 100vh;
   position: fixed;
-  left: 0; // wasn't recommended by the author
-  top: 0; // wasn't recommended by the author
+
   background-color: var(--bg-primary-color);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1618);
   font-size: var(--navbar-font-size);
@@ -34,15 +31,9 @@ main {
   // overflow: scroll;
 
   &:hover {
-    width: 10rem;
+    // width: 10rem;
     // transition: all 600ms ease;
     // transition: transform var(--transition-speed);
-
-    .navbar__nav__item {
-      &__link__text {
-        display: block;
-      }
-    } // end .navbar__nav__item
 
     .navbar__nav__logo {
       // border: 4px solid pink;
@@ -178,9 +169,29 @@ main {
 
 // small screen
 
-@media screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
 }
 // large screen
 
-@media screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) {
+  .navbar {
+    width: var(--main-margin-left);
+    position: fixed;
+    height: 100vh;
+    left: 0; // wasn't recommended by the author
+    top: 0; // wasn't recommended by the author
+
+    &:hover {
+      width: 10rem;
+
+      .navbar__nav__item {
+        &__link__text {
+          // display: block;
+          display: inline;
+
+          transition: opacity var(--transition-speed);
+        }
+      } // end .navbar__nav__item
+    }
+  }
 }
