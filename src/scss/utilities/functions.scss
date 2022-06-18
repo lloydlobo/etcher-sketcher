@@ -1,4 +1,4 @@
-@use "sass:math";
+@use 'sass:math';
 
 // Source: https://css-tricks.com/snippets/sass/px-to-em-functions/
 @function rem($pixels, $context: 16) {

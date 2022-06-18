@@ -4,11 +4,12 @@
   --navbar-text-secondary-color: var(--fg-4);
   --text-primary-color: var(--fg2);
   --text-secondary-color: var(--fg4);
-  --bg-primary-color: var(--bg-html);
+  --bg-primary-color: varf(--bg-html);
   --bg-secondary-color: var(--bg_s);
   --main-margin-left: 5rem;
   --svg-width-min: 2rem;
   --svg-margin: 0 1.5rem;
+  --transtion-speed: 0.6s;
 }
 
 main {
@@ -27,6 +28,8 @@ main {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1618);
   font-size: var(--navbar-font-size);
   z-index: var(--layer-important);
+
+  transition: width 200ms ease;
   // padding-inline: var(--size-3); // enable this later!!!
   // overflow: scroll;
 
@@ -128,6 +131,13 @@ main {
       align-items: center;
       height: var(--main-margin-left);
       text-decoration: none;
+      // grayscale turns default fa- color into grey of same brightness
+      filter: grayscale(100%) opacity(0.7) hue-rotate(29deg); // grayscale and opacity are enough, maybe blur too?
+      transition: var(--transition-speed);
+      &:hover {
+        // border: 1px dotted rebeccapurple;
+        filter: grayscale(0%) opacity(1) hue-rotate(0deg);
+      }
     }
   }
 }
@@ -140,4 +150,20 @@ main {
     min-width: 2rem;
     margin: var(--svg-margin); // this decreases the size of svg icons
   }
+}
+
+// font awesome icons
+.fa {
+  &-primary {
+    color: var(--aqua);
+  }
+
+  &-secondary {
+    color: var(--aqua-dim);
+  }
+
+  &-primary,
+  &-secondary {
+    transition: var(--transition-speed);
+  } // instead of hard coding hover props, set filter on nav__item__link
 }
