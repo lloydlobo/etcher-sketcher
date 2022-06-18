@@ -6,7 +6,8 @@
     text-transform: capitalize;
     margin-bottom: var(--size-3);
     text-align: center;
-    background: var(--bg-secondary-color);
+    // background: var(--bg-secondary-color);
+    backdrop-filter: blur(0.5rem);
     color: var(--text-primary-color); // link - a is over riding this
     font-style: italic;
     letter-spacing: var(--font-letterspacing-3);
@@ -47,7 +48,7 @@
     transition: all var(--transition-speed) ease 1s;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 48em) {
     .navbar__nav__logo {
         display: block; // show the logo on mobile
     }

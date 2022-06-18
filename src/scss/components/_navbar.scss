@@ -39,7 +39,11 @@ main {
 
     transition: width 200ms ease;
     // padding-inline: var(--size-3); // enable this later!!!
-    // overflow: scroll;
+    overflow: scroll;
+    // scroll snap
+    scroll-snap-type: x mandatory;
+    scroll-snap-align: start;
+    scroll-behavior: smooth;
 
     &:hover {
         .navbar__nav__logo {
@@ -53,6 +57,7 @@ main {
                 &:hover {
                     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1618);
                 }
+
                 & span.logo-text {
                     color: var(--text-primary-color);
                     text-decoration: none;
@@ -85,7 +90,8 @@ main {
         align-items: center;
 
         &:last-child {
-            display: none;
+            // display: none;
+            color: steelblue;
         }
 
         &__link {
@@ -142,11 +148,11 @@ main {
 
 // small screen
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 48em) {
 }
 // large screen
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 48em) {
     .navbar {
         width: var(--navbar-thickness);
         position: fixed;
