@@ -1,0 +1,196 @@
+:root {
+    --navbar-font-size: var(--font-size-fluid-0);
+    --navbar-text-primary-color: var(--grey);
+    --navbar-text-secondary-color: var(--fg-4);
+    --text-primary-color: var(--fg2);
+    --text-secondary-color: var(--fg4);
+    --bg-primary-color: var(--bg-html);
+    --bg-secondary-color: var(--bg_s);
+    --navbar-thickness: 5rem;
+    --svg-width-min: 2rem;
+    --svg-margin: 0 1.5rem;
+    --transition-speed: 600ms;
+}
+
+main {
+    // margin-left: var(--main-margin-left);
+    padding: var(--size-4);
+}
+
+.navbar {
+    position: fixed;
+
+    // mobile without using media query
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    // swap width for the height
+    width: 100vw;
+    height: var(--navbar-thickness);
+
+    // end of mobile
+
+    background-color: var(--bg-primary-color);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1618);
+    font-size: var(--navbar-font-size);
+    z-index: var(--layer-important);
+
+    transition: width 200ms ease;
+    // padding-inline: var(--size-3); // enable this later!!!
+    overflow: scroll;
+    // scroll snap
+    scroll-snap-type: x mandatory;
+    scroll-snap-align: start;
+    scroll-behavior: smooth;
+
+    &:hover {
+        .navbar__nav__logo {
+            align-items: center;
+            justify-content: center;
+
+            &__link {
+                display: flex;
+                align-items: center;
+
+                &:hover {
+                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1618);
+                }
+
+                & span.logo-text {
+                    color: var(--text-primary-color);
+                    text-decoration: none;
+                }
+
+                & svg {
+                    display: block;
+                    color: aliceblue;
+
+                    &:hover {
+                        color: var(--navbar-text-secondary-color);
+                    }
+                }
+            } // end .navbar__nav__logo__link
+        } // end .navbar__nav__logo
+    } // end .navbar:hover
+} // end .navbar
+
+// no more than 3 nested levels please
+.navbar__nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    // gap: var(--size-3);
+
+    &__item {
+        align-items: center;
+
+        &:last-child {
+            // display: none;
+            color: steelblue;
+        }
+
+        &__link {
+            display: flex; // set individual link and svg to flex in a row
+            color: var(--text-primary-color);
+            align-items: center; // cross axis now runs vertically
+            height: var(--navbar-thickness);
+            text-decoration: none;
+            filter: grayscale(80%) opacity(0.7) hue-rotate(29deg)
+                brightness(125%); // grayscale and opacity are enough, maybe blur too?  // grayscale turns default fa- color into grey of same brightness
+            transition: var(--transition-speed);
+
+            // for mobile -- centering the items
+            justify-content: center;
+
+            &:hover {
+                filter: grayscale(0%) opacity(1) hue-rotate(0deg)
+                    brightness(100%);
+            }
+        }
+    }
+}
+
+.navbar__nav__item__link {
+    &__text {
+        display: none; // show the text only when the link is hovered
+        font-size: var(--font-size-0);
+        text-transform: lowercase;
+    }
+
+    svg {
+        min-width: 2rem;
+        margin: var(--svg-margin); // this decreases the size of svg icons
+        fill: var(--text-primary-color);
+    }
+}
+
+// font awesome icons
+.fa {
+    &-primary {
+        color: var(--aqua);
+    }
+
+    &-secondary {
+        color: var(--aqua-dim);
+    }
+
+    &-primary,
+    &-secondary {
+        transition: var(--transition-speed);
+    } // instead of hard coding hover props, set filter on nav__item__link
+}
+
+/// ///////////////////////////////////////////////////////////////////////////
+///
+/// media queries
+///
+/// ///////////////////////////////////////////////////////////////////////////
+
+// small screen
+
+@media only screen and (max-width: 48em) {
+}
+// large screen
+
+@media only screen and (min-width: 48em) {
+    .navbar {
+        width: var(--navbar-thickness);
+        position: fixed;
+        height: 100vh;
+        left: 0; // wasn't recommended by the author
+        top: 0; // wasn't recommended by the author
+        overflow: hidden;
+
+        &:hover {
+            width: 10rem;
+
+            .navbar__nav__item {
+                &__link__text {
+                    // display: block;
+                    display: inline;
+
+                    transition: opacity var(--transition-speed);
+                }
+            } // end .navbar__nav__item
+        }
+
+        &__nav {
+            flex-direction: column; // items flow vertically
+            gap: var(--size-3);
+
+            &__item {
+                align-items: center;
+                // justify-content: center;
+
+                &:last-child {
+                    display: flex;
+                    margin-top: clamp(10vh, 10vh + var(--size-4), 90vh);
+                }
+            }
+        }
+    }
+}

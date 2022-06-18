@@ -1,33 +1,37 @@
 button {
-  position: relative;
-  border: none;
-  border: 3px solid transparent;
-  transition: color 0.5s, transform 0.2s, background-color 0.2s;
-  border-radius: 3px;
-  margin: 0 10px;
-  padding-block: var(--font-size-400);
-  padding-inline: var(--font-size-700);
-  cursor: pointer;
-  background-color: var(--bg1);
-  letter-spacing: var(--font-size-100);
-  font-size: var(--font-size-fluid-0);
-
-  &[data-button-style-none] {
-    background-color: transparent;
-    color: var(--fg2);
+    position: relative;
     border: none;
-    padding: 0;
-    font-size: var(--font-size-400);
-  }
-
-  &:active {
-    transform: translateY(3px);
-  }
-
-  &::after,
-  &::before {
+    border: 3px solid transparent;
+    transition: color 0.5s, transform 0.2s, background-color 0.2s;
     border-radius: 3px;
-  }
+    margin: 0 10px;
+    padding-block: var(--font-size-400);
+    padding-inline: var(--font-size-700);
+    cursor: pointer;
+    background-color: var(--bg1);
+    letter-spacing: var(--font-size-100);
+    font-size: var(--font-size-fluid-0);
+
+    color: var(
+        --fg
+    ) !important; // hack to overwrite material-bubble animation hover class
+
+    &[data-button-style-none] {
+        background-color: transparent;
+        color: var(--fg2);
+        border: none;
+        padding: 0;
+        font-size: var(--font-size-400);
+    }
+
+    &:active {
+        transform: translateY(3px);
+    }
+
+    &::after,
+    &::before {
+        border-radius: 3px;
+    }
 }
 
 /* ************************************************************************* */
@@ -36,33 +40,33 @@ button {
 
 /* cspell:disable */
 #btnsMode {
-  display: var(--display-btns-mode);
+    display: var(--display-btns-mode);
 }
 
 #btnsSize {
-  display: var(--display-btns-size);
+    display: var(--display-btns-size);
 }
 
 #color-controller {
-  margin: 10px 0px 10px 10px;
+    margin: 10px 0px 10px 10px;
 }
 
 // button and data-state
 .nav__btn-get-inspired#btnGetInspired {
-  &[data-transparent='true'] {
-    // this is like a bug which is a feature, animates the toggle,
-    // and smooth positioning and opacity when the data-transparent='false'
-    @extend button;
-    opacity: var(--fade-btn-get-inspired);
-    position: absolute;
-    transition: position 0.5s ease-out;
-  }
+    &[data-transparent='true'] {
+        // this is like a bug which is a feature, animates the toggle,
+        // and smooth positioning and opacity when the data-transparent='false'
+        @extend button;
+        opacity: var(--fade-btn-get-inspired);
+        position: absolute;
+        transition: position 0.5s ease-out;
+    }
 
-  &[data-transparent='false'] {
-    transition: all 2s ease-in;
-    opacity: 1;
-    top: 0;
-    position: relative;
-    // @extend button; // this will draw button edges and style
-  }
+    &[data-transparent='false'] {
+        transition: all 2s ease-in;
+        opacity: 1;
+        top: 0;
+        position: relative;
+        // @extend button; // this will draw button edges and style
+    }
 }
