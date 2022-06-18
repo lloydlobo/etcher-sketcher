@@ -122,6 +122,7 @@ main {
     svg {
         min-width: 2rem;
         margin: var(--svg-margin); // this decreases the size of svg icons
+        fill: var(--text-primary-color);
     }
 }
 
