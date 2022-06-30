@@ -5,6 +5,7 @@
 A simple drawing application which merges Etch and Sketch into one.
 
 [Live App](https://etchersketcher.netlify.app/)
+![image](https://user-images.githubusercontent.com/76430758/176674532-659457a3-e694-47f3-b860-ec966bff9b3e.png)
 
 ## Table of Content
 
