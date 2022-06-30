@@ -90,9 +90,3 @@ Source: <https://www.theodinproject.com/lessons/foundations-etch-a-sketch>
 
 - The Odin Project
   - Source: <https://www.theodinproject.com/lessons/foundations-etch-a-sketch>
-  
-- Quotes from "Get Inspired"
-  - Source: <https://api.github.com/zen>
-
-- Engrave CSS trick
-  - Source: <https://codepen.io/daryl/pen/XWXpyz>
