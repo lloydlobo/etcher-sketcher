@@ -86,12 +86,6 @@ Source: <https://www.theodinproject.com/lessons/foundations-etch-a-sketch>
 - Focus on UX while keeping DX in mind.
 - Creating welcoming and beautiful visuals when the scope of the project is small.
 
-## Author
-
-👤 **ArtisDev**
-
-- GitHub: [Artis-Dev](https://github.com/artis-dev)
-
 ## Credits
 
 - The Odin Project
