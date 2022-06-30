@@ -37,12 +37,60 @@ Source: <https://www.theodinproject.com/lessons/foundations-etch-a-sketch>
 
 <br/>
 
-**Source**: <https://www.theodinproject.com/lessons/foundations-etch-a-sketch>
+**Project Brief Source**: <https://www.theodinproject.com/lessons/foundations-etch-a-sketch>
 
 ## Scope
 
-- Etch a Sketch uses vanilla JavaScript to create a grid of squares on the <abbr title="Document Object Model">DOM</abbr>.
-- [ ] Add scope details
+- Etch a Sketch uses JavaScript powered by Typerscript to create a grid of squares on the <abbr title="Document Object Model">DOM</abbr>.
+
+## Built with
+
+### Technologies
+
+- HTML
+- SCSS
+- TypeScript
+
+### Tools
+
+- Visual Studio Code
+- Svelte & Vite
+- ESLint + Prettier
+- Git and GitHub
+- Netlify (hosting)
+- Husky CI
+
+### Third party code
+
+- [Font Awesome](https://fontawesome.com) - Icons
+- [modern-css-reset](https://piccalil.li/blog/a-modern-css-reset/) - Base CSS Reset using selective code snippets
+
+## Outcome
+
+- Used HTML5 **semantic elements** for better readability and structure.
+- CSS Grid used for re-generating the massive sketch area.
+- Project managed with Github and Git integration and quick previews with Netlify.
+- Works on all device. (Bug while hovering/swiping divs (pixels) on mobile)
+- Follows formating and linting enforced by strict prettier & eslint.
+
+## Summary
+
+### What I learned
+
+- DOM manipulation and working only with scripting language to create & destroy elements
+  - Somewhat similar to a CRUD app but for artists.
+- Making the code readable.
+- It takes few tries before one gets it right.
+  - For example, event handling and the execution order of each function is critical.
+- Learned and refined SCSS skills.
+- Focus on UX while keeping DX in mind.
+- Creating welcoming and beautiful visuals when the scope of the project is small.
+
+## Author
+
+👤 **ArtisDev**
+
+- GitHub: [Artis-Dev](https://github.com/artis-dev)
 
 ## Credits
 
